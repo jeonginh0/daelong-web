@@ -2,25 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 const { kakao } = window;
 
-const getCurrentCoordinate = async () => {
-    console.log("getCurrentCoordinate 함수 실행!!!");
-    return new Promise((res, rej) => {
-        // HTML5의 geolocaiton으로 사용할 수 있는지 확인합니다.
-        if (navigator.geolocation) {
-            // GeoLocation을 이용해서 접속 위치를 얻어옵니다.
-            navigator.geolocation.getCurrentPosition(function (position) {
-                console.log(position);
-                const lat = position.coords.latitude; // 위도
-                const lon = position.coords.longitude; // 경도
-
-                const coordinate = new kakao.maps.LatLng(lat, lon);
-                res(coordinate);
-            });
-        } else {
-            rej(new Error("현재 위치를 불러올 수 없습니다."));
-        }
-    });
-};
 
 const Map = () => {
     const [map, setMap] = useState(null);
@@ -56,13 +37,57 @@ const Map = () => {
         // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
         var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
 
+        // 마커 이미지 설정
+        var imageSrc = 'https://cdn4.iconfinder.com/data/icons/symbol-blue-set-1/100/Untitled-2-09-1024.png',
+            imageSize = new kakao.maps.Size(30, 30),
+            imageOption = {offset: new kakao.maps.Point(13, 35)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+        // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+
+
+        function displayMarker(locPosition) {
+
+            // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({
+                map: map,
+                image: markerImage,
+                position: locPosition
+            });
+
+            // 지도 중심좌표를 접속위치로 변경합니다
+            map.setCenter(locPosition);
+        }
+
+        const getCurrentCoordinate = async () => {
+            console.log("getCurrentCoordinate 함수 실행!!!");
+
+            return new Promise((res, rej) => {
+                // HTML5의 geolocaiton으로 사용할 수 있는지 확인합니다.
+                if (navigator.geolocation) {
+                    // GeoLocation을 이용해서 접속 위치를 얻어옵니다.
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        console.log(position);
+                        const lat = position.coords.latitude; // 위도
+                        const lon = position.coords.longitude; // 경도
+
+                        const coordinate = new kakao.maps.LatLng(lat, lon);
+                        displayMarker(coordinate);
+                        res(coordinate) ;
+                    });
+                } else {
+                    rej(new Error("현재 위치를 불러올 수 없습니다."));
+                }
+            });
+        };
+
         // 키워드로 장소를 검색합니다
         searchPlaces();
 
         // 키워드 검색을 요청하는 함수입니다
         async function searchPlaces() {
             console.log("searchPlaces 실행!!!");
-            var keyword = "주변 음식점";
+            var keyword = "주변 맛집";
             const currentCoordinate = await getCurrentCoordinate();
             console.log(currentCoordinate);
             var options = {
