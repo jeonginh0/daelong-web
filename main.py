@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request, BackgroundTasks # FastAPI 애플리케이션을 생성하는데 사용
 from fastapi.templating import Jinja2Templates # FastAPI에서 Jinja2 템플릿 사용
-from selenium_script import scrape_food_data
+
 import os # 운영체제와 상호작용
 
 
