@@ -1,16 +1,21 @@
-import Map from "./component/Map";
-import Sidebar from './component/Sidebar';
-import "./styles/style.css"
-import "./styles/playbtn.css"
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Map from './component/Map';
+import Button from './component/Button';
+import './styles/style.css';
+import './styles/button.css';
 
 function App() {
-
-  return (
-      <div className="App">
-          <Sidebar/>
-          <Map/>
-      </div>
-  );
+    return (
+        <Router>
+            <div className="App">
+                <Routes>
+                    <Route path="/" element={<Button />} />
+                    <Route path="/map" element={<Map />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
