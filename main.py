@@ -1,29 +1,14 @@
-from fastapi import FastAPI, Request, BackgroundTasks # FastAPI 애플리케이션을 생성하는데 사용
-from fastapi.templating import Jinja2Templates # FastAPI에서 Jinja2 템플릿 사용
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from starlette.responses import RedirectResponse
 
-import os # 운영체제와 상호작용
+app = FastAPI()
 
+# React 앱의 정적 파일들을 서빙하기 위해 build 디렉토리를 정적 파일 경로로 설정합니다.
+# 여기서 'build'는 React 앱에서 빌드한 디렉토리 이름입니다. 실제로는 해당 디렉토리의 경로를 지정해야 합니다.
+app.mount("/", StaticFiles(directory="./frontend/build", html=True), name="static")
 
-app = FastAPI() # FastAPI()를 호출하여 FastAPI 객체를 생성
-
-# 현재 파일의 디렉토리를 기준으로 절대 경로 설정
-current_dir = os.path.dirname(os.path.abspath(__file__))
-# __file__ 변수를 사용하여 현재 스크립트 파일의 절대 경로를 가져온다.
-# dirname = 스크립트 파일의 절대 경로에서 디렉토리만 추출한다.
-
-frontend_dir = os.path.join(current_dir, "frontend/public")
-# 앞서 얻은 현재 스크립트 파일의 디렉토리 경로와 "frontend/public" 문자열을 결합,
-# 프론트엔드 파일이 위치한 디렉토리의 절대 경로를 얻는다.
-
-# 'frontend/public' 폴더를 templates로 설정
-templates = Jinja2Templates(directory=frontend_dir)
-
+# 루트 경로('/')로 요청이 오면 index.html 파일로 리다이렉트합니다.
 @app.get("/")
-async def read_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
-
-
+async def redirect_to_index():
+    return RedirectResponse(url="/index.html")
