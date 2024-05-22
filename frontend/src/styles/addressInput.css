@@ -1,0 +1,51 @@
+/* src/styles/addressInput.css */
+
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-container input {
+    flex: 1;
+    margin-right: 5px;
+    width: 50%;
+    /*width: calc(100% - 60px); !* 버튼 공간만큼 너비 조정 *!*/
+    /*padding: 10px;*/
+    /*border: 1px solid #ccc;*/
+    /*border-radius: 5px;*/
+    /*font-size: 16px;*/
+    /*outline: none;*/
+}
+
+.input-container label {
+    position: absolute;
+    top: -15px; /* 라벨을 입력란 위로 이동 */
+    left: 10px;
+    font-size: 14px;
+    color: #777;
+    padding: 0 5px; /* 좌우 패딩 추가 */
+}
+
+.input-container .add-button {
+    position: absolute;
+    top: 10px; /* 버튼의 위치를 상단 여백으로 조정 */
+    right: 10px; /* 버튼의 위치를 오른쪽 여백으로 조정 */
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+    color: #007500; /* + 버튼 색상 */
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.input-container .remove-button {
+    position: absolute;
+    top: 10px; /* 버튼의 위치를 상단 여백으로 조정 */
+    right: 40px; /* + 버튼과 겹치지 않도록 오른쪽 여백을 추가로 조정 */
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+    color: #ff0000; /* - 버튼 색상 */
+    cursor: pointer;
+    font-size: 18px;
+}

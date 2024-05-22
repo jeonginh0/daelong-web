@@ -1,0 +1,29 @@
+/* Auto layout */
+.btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 9px 45px;
+    gap: 10px;
+
+    top: 20px;
+    position: relative;
+    width: 200px;
+    height: 39px;
+
+    background: #007500;
+    border-radius: 100px;
+
+    /* 글씨 */
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.btn:active {
+    /*버튼 눌리는 효과*/
+    box-shadow: inset -.3rem -.1rem 1.4rem  #FBFBFB,
+    inset .3rem .4rem .8rem #BEC5D0;
+    cursor: pointer;
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import '../styles/sidebar.css';
 const { kakao } = window;
 
 
@@ -293,12 +293,7 @@ const Map = () => {
         <div className="map_wrap">
             <div
                 id="map"
-                style={{
-                    width: "100%",
-                    height: "100vh",
-                    position: "relative",
-                    overflow: "hidden",
-                }}
+                className="map"
             ></div>
             <div id="menu_wrap" className="bg_white">
                 <hr />

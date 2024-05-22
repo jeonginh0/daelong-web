@@ -1,11 +1,14 @@
-import Map from "./Map";
+import Map from "./component/Map";
+import Sidebar from './component/Sidebar';
 import "./styles/style.css"
+import "./styles/playbtn.css"
 
 function App() {
 
   return (
       <div className="App">
-        <Map/>
+          <Sidebar/>
+          <Map/>
       </div>
   );
 }
