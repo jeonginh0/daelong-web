@@ -86,15 +86,37 @@
     position: absolute;
     width: 110px;
     height: 40px;
-    left: 1709px;
+    right: 15px;  /* 오른쪽 여백 */
     top: 15px;
-
-    stroke: #000000;
+    background: #F5F5F5;
 
     /* 글씨 */
     color: #000000;
     font-size: 1em;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/*회원가입 버튼*/
+.signupBtn {
+    position: absolute;
+    width: 110px;
+    height: 40px;
+    right: 135px;  /* 오른쪽 여백 */
+    top: 15px;
+    background: #F5F5F5;
+
+    /* 글씨 */
+    color: #000000;
+    font-size: 1em;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .popup {
@@ -105,18 +127,17 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #8680809E;
+    background: rgba(134, 128, 128, 0.62);
     border-radius: 10px;
     padding: 20px;
 }
 
 .popup-content {
+    background-color: white;
     padding: 20px;
     border-radius: 4px;
     text-align: center;
     position: relative;
-
-    color: #FFFFFF;
 }
 
 .close {
@@ -125,29 +146,4 @@
     right: 10px;
     font-size: 1.5em;
     cursor: pointer;
-}
-
-.category_selectorBtn {
-    position: absolute;
-    top: 50px; /* 예시로 50px로 설정, 필요에 따라 조절 가능 */
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    z-index: 1000; /* 다른 요소들보다 앞에 표시되도록 설정 */
-}
-
-.category_selectorBtn button {
-    padding: 8px 12px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-    outline: none;
-}
-
-.category_selectorBtn button:hover {
-    background-color: #f0f0f0;
 }

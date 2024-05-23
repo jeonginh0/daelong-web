@@ -4,6 +4,7 @@ import Map from './component/Map';
 import MainPage from "./component/MainPage";
 import './styles/style.css';
 import './styles/button.css';
+import Signup from "./component/Signup";
 
 function App() {
     return (
@@ -11,6 +12,7 @@ function App() {
             <div className="App">
                 <Routes>
                     <Route path="/" element={<MainPage />} />
+                    <Route path="/signup" element={<Signup />} />
                     <Route path="/map" element={<Map />} />
                 </Routes>
             </div>
