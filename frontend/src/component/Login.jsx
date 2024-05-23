@@ -30,6 +30,10 @@ const Login = () => {
         navigate("/login/");
     }
 
+    const goSignUpPage = () => {
+        navigate("/signup/");
+    }
+
     return (
         <div className="login-container">
             <div className="head_screen">
@@ -38,6 +42,7 @@ const Login = () => {
                 </div>
                 <div className="myPageBtn" onClick={goMyPage}>마이페이지</div>
                 <div className="loginBtn" onClick={goLoginPage}>로그인</div>
+                <div className="signupBtn" onClick={goSignUpPage}>회원가입</div>
             </div>
             <div className="login-form">
                 <div className="text-size">

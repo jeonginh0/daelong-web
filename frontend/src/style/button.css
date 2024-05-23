@@ -70,7 +70,7 @@ body, html {
     position: absolute;
     width: 100px;
     height: 40px;
-    left: 1600px;
+    left: 1540px;
     top: 30px;
 
     background: rgba(74, 74, 74, 0.5);
@@ -106,7 +106,7 @@ body, html {
     position: absolute;
     width: 100px;
     height: 40px;
-    left: 1709px;
+    left: 1660px;
     top: 30px;
 
     background: #000000;
@@ -131,6 +131,41 @@ body, html {
 }
 
 .loginBtn:hover {
+    background: #6202FF;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6); /* 호버 시 그림자 변경 */
+}
+
+/*회원가입 버튼*/
+.signupBtn {
+    /* 기본 스타일 */
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    left: 1780px;
+    top: 30px;
+
+    background: #000000;
+
+    color: #FFFFFF; /* 텍스트 색상 */
+    font-size: 1em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트 윤곽선 추가 */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    /* 검은색 윤곽선 */
+    border: 2px solid #000000;
+
+    /* 모서리를 둥글게 */
+    border-radius: 50px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease, box-shadow 0.3s ease; /* 호버 효과를 부드럽게 만들기 위해 전환 효과 추가 */
+}
+
+.signupBtn:hover {
     background: #6202FF;
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6); /* 호버 시 그림자 변경 */
 }

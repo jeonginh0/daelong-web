@@ -49,6 +49,10 @@ const MainPage = () => {
         navigate("/login/");
     }
 
+    const goSignUpPage = () => {
+        navigate("/signup/");
+    }
+
     return (
         <main>
             <div className="head_screen">
@@ -57,6 +61,7 @@ const MainPage = () => {
                 </div>
                 <div className="myPageBtn" onClick={goMyPage}>마이페이지</div>
                 <div className="loginBtn" onClick={goLoginPage}>로그인</div>
+                <div className="signupBtn" onClick={goSignUpPage}>회원가입</div>
             </div>
             <div className="main_screen">
                 <img src="/map.png" alt="메인이미지" className="background_image" />
