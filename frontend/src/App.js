@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Map from './component/Map';
-import Button from './component/Button';
+import MainPage from "./component/MainPage";
 import './styles/style.css';
 import './styles/button.css';
 
@@ -10,7 +10,7 @@ function App() {
         <Router>
             <div className="App">
                 <Routes>
-                    <Route path="/" element={<Button />} />
+                    <Route path="/" element={<MainPage />} />
                     <Route path="/map" element={<Map />} />
                 </Routes>
             </div>

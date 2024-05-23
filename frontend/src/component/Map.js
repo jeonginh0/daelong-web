@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import {useParams} from 'react-router-dom';
 import "../styles/style.css"
+import "../styles/button.css"
+import "./Utils"
+
 const { kakao } = window;
 
-
 const Map = () => {
+    const { addresses } = useParams();
     const [map, setMap] = useState(null);
+    // 카테고리 상태 선언
+    const [category, setCategory] = useState("맛집");
 
     //처음 지도 그리기
     useEffect(()=>{
@@ -19,6 +25,16 @@ const Map = () => {
 
         // 지도를 생성합니다
         var map = new kakao.maps.Map(mapContainer, mapOption);
+
+        // 카테고리 선택 버튼을 지도 상단에 배치하기 위한 요소
+        var categorySelector = document.createElement('div');
+        categorySelector.innerHTML = `
+            <button onClick={() => setCategory('맛집')}>맛집</button>
+            <button onClick={() => setCategory('카페')}>카페</button>
+        `;
+        mapContainer.appendChild(categorySelector);
+
+        setMap(map);
 
         // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
         var mapTypeControl = new kakao.maps.MapTypeControl();
@@ -45,9 +61,7 @@ const Map = () => {
         // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
         var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
 
-
         function displayMarker(locPosition) {
-
             // 마커를 생성합니다
             var marker = new kakao.maps.Marker({
                 map: map,
@@ -87,7 +101,7 @@ const Map = () => {
         // 키워드 검색을 요청하는 함수입니다
         async function searchPlaces() {
             console.log("searchPlaces 실행!!!");
-            var keyword = "주변 맛집";
+            var keyword = `내 주변 ${category}`;
             const currentCoordinate = await getCurrentCoordinate();
             console.log(currentCoordinate);
             var options = {
@@ -274,9 +288,7 @@ const Map = () => {
         // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
         // 인포윈도우에 장소명을 표시합니다
         function displayInfowindow(marker, title) {
-            var content =
-                '<div style="padding:5px;z-index:1;color:black">' + title + "</div>";
-
+            var content = '<div class="infowindow">' + title + '</div>';
             infowindow.setContent(content);
             infowindow.open(map, marker);
         }
@@ -287,14 +299,20 @@ const Map = () => {
                 el.removeChild(el.lastChild);
             }
         }
-    }, []);
+    }, [category]);
+
+    const handleCategoryChange = (newCategory) => {
+        setCategory(newCategory);
+    };
 
     return (
         <div className="map_wrap">
-            <div
-                id="map"
-                className="map"
-            ></div>
+            {/* 카테고리 버튼들 */}
+            <div className="category_selectorBtn">
+                <button onClick={() => handleCategoryChange("맛집")}>맛집</button>
+                <button onClick={() => handleCategoryChange("카페")}>카페</button>
+            </div>
+            <div id="map" className="map"></div>
             <div id="menu_wrap" className="bg_white">
                 <hr />
                 <ul id="placesList"></ul>
