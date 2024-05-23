@@ -179,7 +179,7 @@ const Map = () => {
                 <img src="/teamlogo.png" alt="로고" width="200px" height="90px" onClick={goRootPage}/>
                 <div className="myPageBtn" onClick={goMyPage}>마이페이지</div>
                 <div className="loginBtn" onClick={goLoginPage}>로그인</div>
-                <div className="signupBtn" onClick={goSignUpPage}>회원</div>
+                <div className="signupBtn" onClick={goSignUpPage}>회원가입</div>
             </div>
             <div id="map" className="map"></div>
             <ul id="category">
