@@ -1,0 +1,102 @@
+.head_screen {
+    position: absolute;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    z-index: 2000;
+    border-bottom: 2px solid #2c0375; /* 아래쪽에 1px 두께의 검은색 윤곽선 추가 */
+    top: 0;
+}
+
+.haed_screen .image-wrapper {
+    background-color: #ffffff;
+    width: 1920px;
+    height: 100px;
+    position: relative;
+}
+
+.main_screen {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.main_screen .image-wrapper {
+    background-color: #ffffff;
+    width: 1920px;
+    height: 980px;
+    position: relative;
+}
+
+.text_screen {
+    /* Rectangle 8 */
+
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 1228px;
+    height: 550px;
+    left: 345px;
+    top: 200px;
+
+    background: rgba(134, 128, 128, 0.62);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+}
+
+.main_text {
+    font-size: 5em;
+    color: #fff;
+    margin-left: -510px;
+    margin-bottom: 0px; /* 간격 줄이기 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    font-family: 'Georgia', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트 윤곽선 추가 */
+}
+
+.sub_text1 {
+    font-size: 2em;
+    color: #fff;
+    margin-left: -700px;
+    margin-top: 0; /* 간격 줄이기 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    font-family: 'Georgia', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트 윤곽선 추가 */
+}
+
+.sub_text2 {
+    width: 180px;
+    height: 20px;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #636365;
+    color: white;
+    font-size: 1em;
+    text-align: center;
+    font-family: 'Georgia', sans-serif;
+    background: rgba(134, 128, 128, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+
+.modal_sub {
+    background-color: rgba(74, 74, 74, 0.5); /* 반투명한 흰색 배경 */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    z-index: 100;
+}
+
+.logo_wrapper {
+    cursor: pointer;
+}
