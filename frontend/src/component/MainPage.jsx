@@ -3,13 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/button.css';
 // import { basicCenterAlgorithm } from './utils';
 
-
 const MainPage = () => {
     const [selectedPlace, setSelectedPlace] = useState(null);
     const [isUsagePopupOpen, setIsUsagePopupOpen] = useState(false);
     const [isAddressPopupOpen, setIsAddressPopupOpen] = useState(false);
     const [addresses, setAddresses] = useState([]);
-    const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
     const [isSignupPopupOpen, setIsSignupPopupOpen] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -21,7 +19,6 @@ const MainPage = () => {
             if (popupRef.current && !popupRef.current.contains(event.target)) {
                 closeUsagePopup();
                 closeAddressPopup();
-                closeLoginPopup();
                 closeSignupPopup();
             }
         };
@@ -61,36 +58,16 @@ const MainPage = () => {
         setIsAddressPopupOpen(false);
     };
 
-    const openLoginPopup = () => {
-        setIsLoginPopupOpen(true);
+    const openLoginPage = () => {
+        navigate('/login');
     };
 
-    const closeLoginPopup = () => {
-        setIsLoginPopupOpen(false);
-    };
-
-      const openSignupPopup = () => {
+    const openSignupPopup = () => {
         navigate('/signup');
     };
 
     const closeSignupPopup = () => {
         setIsSignupPopupOpen(false);
-    };
-
-    const handleLogin = () => {
-        // Handle login logic here
-        console.log("Logging in with:", username, password);
-        // You can add login logic here, e.g., call an authentication API
-        // For simplicity, let's just close the popup
-        closeLoginPopup();
-    };
-
-    const handleSignup = () => {
-        // Handle signup logic here
-        console.log("Signing up with:", username, password);
-        // You can add signup logic here, e.g., call a registration API
-        // For simplicity, let's just close the popup
-        closeSignupPopup();
     };
 
     return (
@@ -101,7 +78,7 @@ const MainPage = () => {
             <div className="startServiceBtn" onClick={openAddressPopup}>
                 사용하기
             </div>
-            <div className="loginBtn" onClick={openLoginPopup}>
+            <div className="loginBtn" onClick={openLoginPage}>
                 로그인
             </div>
             {isSignupPopupOpen && (
@@ -121,31 +98,6 @@ const MainPage = () => {
                             placeholder="비밀번호"
                         />
                         <button onClick={handleSignup}>회원가입</button>
-                    </div>
-                </div>
-            )}
-            {isLoginPopupOpen && (
-                <div className="popup" ref={popupRef}>
-                    <div className="popup-content">
-                        <span className="close" onClick={closeLoginPopup}>&times;</span>
-                        <div>
-                            <input
-                            type="text"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            placeholder="아이디"
-                            />
-                        </div>
-                        <div>
-                            <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="비밀번호"
-                            />
-                        </div>
-                        <button onClick={handleLogin}>로그인</button>
-                        <button onClick={openSignupPopup}>회원가입</button>
                     </div>
                 </div>
             )}
