@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'; // useNavigate 훅을 가져옵�
 import "../style/map.css";
 import "../style/screen.css";
 import "../style/button.css";
+
 const { kakao } = window;
 
 const Map = () => {
