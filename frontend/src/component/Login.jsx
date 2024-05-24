@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import {useNavigate} from "react-router-dom";
-import goMyPage from "./MainPage";
-import goLoginPage from "./MainPage";
 import '../style/button.css';
 import '../style/screen.css';
 import '../style/login.css'; // 스타일 파일을 import
