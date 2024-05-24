@@ -183,7 +183,7 @@ const Map = () => {
             </div>
             <div id="map" className="map"></div>
             <ul id="category">
-                <li id="BK9" className={currCategory === 'FD6' ? 'on' : ''} data-order="0"
+            <li id="BK9" className={currCategory === 'FD6' ? 'on' : ''} data-order="0"
                     onClick={() => onClickCategory('FD6')}>
                     <span className="category_bg bank"></span>
                     음식점
