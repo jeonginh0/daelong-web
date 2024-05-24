@@ -59,9 +59,9 @@ body, html {
 .text_screen {
     box-sizing: border-box;
     position: absolute;
-    width: 80%;
-    max-width: 1228px;
-    height: 550px;
+    width: 50%;
+    max-width: 1220px;
+    height: 450px;
     left: 50%;
     top: 70px;
     transform: translateX(-50%); /* 가운데 정렬 */
