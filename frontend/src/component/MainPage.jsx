@@ -90,6 +90,7 @@ const MainPage = () => {
                     <div className={`modal ${isStartModalOpen ? 'show' : ''}`} ref={startModalRef}>
                         <div className="modal-background" onClick={() => setIsStartModalOpen(false)}></div>
                         <div className={`modal-content ${isStartModalOpen ? 'show' : ''}`}>
+                            
                             <span className="close" onClick={() => setIsStartModalOpen(false)}>&times;</span>
                             {addresses.map((address, index) => (
                                 <div key={index}>
