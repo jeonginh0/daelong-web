@@ -1,62 +1,12 @@
-/* 기본 스타일 */
-body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
+/* Mypage CSS */
 
-/* 사용자 정보 스타일링 */
-.user-info-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 20%; /* 화면의 20%를 차지하도록 조정 */
-    height: 100%;
-    background-color: #fff;
-    border-right: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-
-.MyPagehead_screen {
-    position: fixed; /* 상단 고정 */
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    z-index: 2000;
-    border-bottom: 2px solid #2c0375;
-    top: 0;
-}
-
-
-
-.user-info {
-    display: flex;
-    flex-direction: column;
-    margin-top: 90px;
-    gap: 20px;
-    background-color: #333;
-    color: #fff;
-}
-
-.user-info div {
-    padding: 10px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-}
-
-/* 사이드바 스타일링 */
 .sidebar {
     width: 250px;
     height: 100%;
     background-color: #333;
     color: #fff;
     padding: 20px;
-    margin-top: 200px;
+    margin-top: 96px;
 }
 
 .sidebar h2 {
