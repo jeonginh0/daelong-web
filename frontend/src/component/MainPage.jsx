@@ -7,7 +7,7 @@ const MainPage = () => {
     const [selectedPlace, setSelectedPlace] = useState(null);
     const [isUsageModalOpen, setIsUsageModalOpen] = useState(false);
     const [isStartModalOpen, setIsStartModalOpen] = useState(false);
-    const [addresses, setAddresses] = useState([]);
+    const [addresses, setAddresses] = useState(["", ""]); // 두 개의 주소 입력 상태 추가
     const navigate = useNavigate();
     const usageModalRef = useRef();
     const startModalRef = useRef();
@@ -93,15 +93,17 @@ const MainPage = () => {
                             
                             <span className="close" onClick={() => setIsStartModalOpen(false)}>&times;</span>
                             {addresses.map((address, index) => (
-                                <div key={index}>
+                                <div className="address-input-container">
                                     <input
                                         type="text"
-                                        value={address}
-                                        onChange={(e) => handleChange(index, e.target.value)}
+                                        value={addresses[0]}
+                                        onChange={(e) => handleChange(0, e.target.value)}
                                         placeholder="주소를 입력해주세요."
+                                        className="input-field"
                                     />
-                                    {index !== addresses.length - 1 && <br/>}
+                                    <br/>
                                 </div>
+
                             ))}
                             <button className="add-button" onClick={handleAddAddress}>만날 사람 추가하기!</button>
                             <button className="meet-button" onClick={handleSubmit}>여기서 만나자!</button>
@@ -116,5 +118,4 @@ const MainPage = () => {
         </main>
     );
 };
-
 export default MainPage;
