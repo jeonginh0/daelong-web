@@ -99,12 +99,13 @@ const MainPage = () => {
                                         onChange={(e) => handleChange(index, e.target.value)}
                                         placeholder="주소를 입력해주세요."
                                     />
-                                    {index !== addresses.length - 1 && <br />}
+                                    {index !== addresses.length - 1 && <br/>}
                                 </div>
                             ))}
-                            <button onClick={handleAddAddress}>+ 추가</button>
-                            <button onClick={handleSubmit}>여기서 만나자!</button>
+                            <button className="add-button" onClick={handleAddAddress}>만날 사람 추가하기!</button>
+                            <button className="meet-button" onClick={handleSubmit}>여기서 만나자!</button>
                         </div>
+
                     </div>
                 )}
             </div>
