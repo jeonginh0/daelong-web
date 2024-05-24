@@ -4,7 +4,7 @@ body, html {
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .head_screen {
@@ -27,6 +27,12 @@ body, html {
     position: relative;
 }
 
+.head_screen .image-wrapper img {
+    width: 100%;
+    height: auto; /* 이미지 반응형으로 만들기 */
+    max-height: 100px; /* head_screen 높이에 맞게 최대 높이 설정 */
+}
+
 .main_screen {
     background-color: #ffffff;
     display: flex;
@@ -44,14 +50,20 @@ body, html {
     position: relative;
 }
 
+.main_screen .image-wrapper img {
+    width: 100%;
+    height: auto; /* 이미지 반응형으로 만들기 */
+    max-height: 980px; /* main_screen 높이에 맞게 최대 높이 설정 */
+}
+
 .text_screen {
     box-sizing: border-box;
     position: absolute;
-    width: 80%;
-    max-width: 1228px;
-    height: 550px;
+    width: 50%;
+    max-width: 1220px;
+    height: 450px;
     left: 50%;
-    top: 200px;
+    top: 70px;
     transform: translateX(-50%); /* 가운데 정렬 */
     background: rgba(134, 128, 128, 0.62);
     border: 1px solid rgba(0, 0, 0, 0.5);
@@ -117,6 +129,14 @@ body, html {
     .sub_text1 {
         font-size: 1.3em;
     }
+
+    .head_screen .image-wrapper {
+        height: 80px;
+    }
+
+    .main_screen .image-wrapper {
+        height: 700px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -153,7 +173,7 @@ body, html {
     }
 
     .main_screen .image-wrapper {
-        height: 500px;
+        height: 300px;
     }
 
     .text_screen {

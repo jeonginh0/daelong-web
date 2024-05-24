@@ -64,7 +64,7 @@ const MainPage = () => {
                 <div className="signupBtn" onClick={goSignUpPage}>회원가입</div>
             </div>
             <div className="main_screen">
-                <img src="/map.png" alt="메인이미지" className="background_image" />
+                <img src="/mapd.png" alt="메인이미지" className="background_image" />
                 <div className="text_screen">
                     <div className="overlay">
                         <h1 className="main_text">Meeting Service</h1>
