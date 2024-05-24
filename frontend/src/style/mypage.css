@@ -1,0 +1,90 @@
+    /* 기본 스타일 */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.mypage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 20px;
+}
+
+.user-info {
+    flex: 2;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 40px 40px rgba(0, 0, 0, 0.5);
+    max-width: 600px; /* 폼의 최대 너비 설정 */
+    width: 100%; /* 최대 너비에서 넘치지 않도록 */
+}
+
+/* 사용자 정보 스타일링 */
+.user-info div {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+
+/* 사이드바 스타일링 */
+.sidebar {
+    flex: 1;
+    padding: 20px;
+}
+
+.sidebar .friends-section,
+.sidebar .history-section {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 40px 40px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .mypage {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .user-info,
+    .sidebar .friends-section,
+    .sidebar .history-section {
+        max-width: 100%;
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .user-info div {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-info,
+    .sidebar .friends-section,
+    .sidebar .history-section {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .user-info div {
+        padding: 10px;
+    }
+}
+
