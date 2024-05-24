@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import FriendList from "./FriendList";
 import History from "./History";
 import '../style/mypage.css';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const MyPage = () => {
     const [userInfo, setUserInfo] = useState(null);
@@ -22,27 +22,35 @@ const MyPage = () => {
         navigate("/"); // "/" 경로로 이동합니다
     };
 
+    // 회원가입 후 로컬 스토리지에 저장된 사용자 정보를 불러옵니다
+    useEffect(() => {
+        const storedUserInfo = localStorage.getItem('userInfo');
+        if (storedUserInfo) {
+            setUserInfo(JSON.parse(storedUserInfo));
+        }
+    }, []);
+
     return (
         <div className="mypage">
             <div className="user-info">
                 <div className="MyPagehead_screen">
                     <img src="/teamlogo.png" alt="로고" width="200px" height="90px" onClick={goRootPage}/>
                 </div>
-                    <h2>사용자 정보</h2>
-                    {userInfo ? (
-                        <>
-                            <div>아이디: {userInfo.username}</div>
-                            <div>비밀번호: {userInfo.password}</div>
-                            <div>이름: {userInfo.name}</div>
-                            <div>닉네임: {userInfo.nickname}</div>
-                            <div>이메일: {userInfo.email}</div>
-                        </>
-                    ) : (
-                        <div>로그인이 필요합니다.</div>
-                    )}
-                </div>
+                <h2>사용자 정보</h2>
+                {userInfo ? (
+                    <>
+                        <div>아이디: {userInfo.username}</div>
+                        <div>비밀번호: {userInfo.password}</div>
+                        <div>이름: {userInfo.name}</div>
+                        <div>닉네임: {userInfo.nickname}</div>
+                        <div>이메일: {userInfo.email}</div>
+                    </>
+                ) : (
+                    <div>로그인이 필요합니다.</div>
+                )}
+            </div>
             <div className="sidebar">
-            <div className="friends-section">
+                <div className="friends-section">
                     <h2>친구 목록</h2>
                     <FriendList friends={friends} />
                 </div>
