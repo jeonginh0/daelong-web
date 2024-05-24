@@ -1,4 +1,4 @@
-    /* 기본 스타일 */
+/* 기본 스타일 */
 body, html {
     margin: 0;
     padding: 0;
@@ -7,29 +7,42 @@ body, html {
     overflow: hidden;
 }
 
-.mypage {
+/* 사용자 정보 스타일링 */
+.user-info-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20%; /* 화면의 20%를 차지하도록 조정 */
+    height: 100%;
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+.MyPagehead_screen {
+    position: fixed; /* 상단 고정 */
+    background-color: #ffffff;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    height: 100vh;
-    padding: 20px;
+    justify-content: center;
+    width: 100%;
+    z-index: 2000;
+    border-bottom: 2px solid #2c0375;
+    top: 0;
 }
+
+
 
 .user-info {
-    flex: 2;
-    padding: 20px;
-    border-right: 1px solid #ccc;
     display: flex;
     flex-direction: column;
+    margin-top: 90px;
     gap: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 40px 40px rgba(0, 0, 0, 0.5);
-    max-width: 600px; /* 폼의 최대 너비 설정 */
-    width: 100%; /* 최대 너비에서 넘치지 않도록 */
+    background-color: #333;
+    color: #fff;
 }
 
-/* 사용자 정보 스타일링 */
 .user-info div {
     padding: 10px;
     border: 2px solid #ccc;
@@ -38,53 +51,28 @@ body, html {
 
 /* 사이드바 스타일링 */
 .sidebar {
-    flex: 1;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: #fff;
     padding: 20px;
-}
-
-.sidebar .friends-section,
-.sidebar .history-section {
-    margin-bottom: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 40px 40px rgba(0, 0, 0, 0.5);
+    margin-top: 200px;
 }
 
 .sidebar h2 {
-    margin-top: 0;
+    margin-bottom: 20px;
 }
 
-/* 반응형 디자인 */
-@media (max-width: 768px) {
-    .mypage {
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    .user-info,
-    .sidebar .friends-section,
-    .sidebar .history-section {
-        max-width: 100%;
-        padding: 15px;
-        gap: 15px;
-    }
-
-    .user-info div {
-        padding: 15px;
-    }
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
 }
 
-@media (max-width: 480px) {
-    .user-info,
-    .sidebar .friends-section,
-    .sidebar .history-section {
-        padding: 10px;
-        gap: 10px;
-    }
-
-    .user-info div {
-        padding: 10px;
-    }
+.sidebar ul li {
+    margin-bottom: 10px;
 }
 
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+}
