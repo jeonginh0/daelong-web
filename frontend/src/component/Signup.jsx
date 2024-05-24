@@ -15,12 +15,12 @@ const SignUpForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // 여기서 회원가입 로직을 구현합니다.
-        // id, password, name, nickname, email을 가지고 서버로 전송하거나
-        // 다른 처리를 수행합니다.
+
         console.log("회원가입 정보:", id, password, name, nickname, email);
         // 회원가입 후 다른 페이지로 이동하고 싶다면 navigate 함수를 이용합니다.
         navigate('/'); // 이동할 페이지 경로를 지정합니다.
     }
+
 
     const goRootPage = () => {
         navigate("/"); // "/" 경로로 이동합니다
@@ -56,25 +56,31 @@ const SignUpForm = () => {
                     type="text"
                     value={id}
                     onChange={(e) => setId(e.target.value)}
-                    placeholder="아이디"
+                    placeholder="아이디 | ID"
                 />
                 <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="비밀번호"
+                    placeholder="비밀번호 | Password"
+                />
+                <input
+                    type="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="이름 | Name"
                 />
                 <input
                     type="nickname"
                     value={nickname}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="닉네임"
+                    onChange={(e) => setNickname(e.target.value)}
+                    placeholder="닉네임 | NickName"
                 />
                 <input
                     type="e-mail"
                     value={email}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="이메일 | Email"
                 />
                 <button onClick={handleSubmit}>가입하기</button>
             </div>

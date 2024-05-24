@@ -50,13 +50,13 @@ const Login = () => {
                     type="text"
                     value={id}
                     onChange={(e) => setId(e.target.value)}
-                    placeholder="아이디"
+                    placeholder="아이디 | ID"
                 />
                 <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="비밀번호"
+                    placeholder="비밀번호 | Password"
                 />
                 <button onClick={handleLogin}>로그인</button>
             </div>

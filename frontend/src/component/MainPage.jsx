@@ -63,7 +63,7 @@ const MainPage = () => {
                 <div className="loginBtn" onClick={goLoginPage}>로그인</div>
                 <div className="signupBtn" onClick={goSignUpPage}>회원가입</div>
             </div>
-            <div className="main_screen">
+            <div className="main_screen" style={{ overflow: 'auto' }}>
                 <img src="/mapd.png" alt="메인이미지" className="background_image" />
                 <div className="text_screen">
                     <div className="overlay">
