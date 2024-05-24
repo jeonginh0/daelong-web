@@ -63,7 +63,7 @@ body, html {
     max-width: 1228px;
     height: 550px;
     left: 50%;
-    top: 200px;
+    top: 70px;
     transform: translateX(-50%); /* 가운데 정렬 */
     background: rgba(134, 128, 128, 0.62);
     border: 1px solid rgba(0, 0, 0, 0.5);
