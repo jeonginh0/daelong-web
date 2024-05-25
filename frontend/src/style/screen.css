@@ -35,39 +35,33 @@ body, html {
 
 .main_screen {
     background-color: #ffffff;
-    display: contents;
+    display: flex; /* display: contents에서 flex로 변경 */
     flex-direction: row;
     justify-content: center;
     width: 100%;
+    height: 100vh; /* 화면 전체 높이를 채우도록 설정 */
     margin-top: 100px; /* head_screen 높이 만큼의 마진 추가 */
-}
-
-.main_screen .image-wrapper {
-    background-color: #ffffff;
-    width: 100%;
-    height: 980px;
-    max-width: 1920px; /* 최대 너비 설정 */
-    position: relative;
-}
-
-.main_screen .image-wrapper img {
-    width: 100%;
-    height: auto; /* 이미지 반응형으로 만들기 */
-    max-height: 980px; /* main_screen 높이에 맞게 최대 높이 설정 */
+    position: relative; /* 배경 이미지를 위해 position 설정 */
+    background-image: url('/Users/jeonginho/Desktop/projects/dodam/daelongweb/frontend/public/map.png'); /* 배경 이미지 설정 */
+    background-size: cover; /* 배경 이미지를 화면에 꽉 차도록 설정 */
+    background-position: center; /* 배경 이미지 위치를 가운데로 설정 */
+    background-repeat: no-repeat; /* 배경 이미지 반복 안 함 */
 }
 
 .text_screen {
     box-sizing: border-box;
     position: absolute;
-    width: 50%;
+    width: 70%; /* 초기 크기 조정 */
     max-width: 1220px;
-    height: 450px;
+    height: 500px; /* 초기 높이 설정 */
     left: 50%;
     top: 130px;
     transform: translateX(-50%); /* 가운데 정렬 */
     background: rgba(134, 128, 128, 0.62);
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 50px;
+    padding: 20px; /* 내부 패딩 추가 */
+    z-index: 1; /* text_screen을 배경 이미지 위에 배치 */
 }
 
 .main_text {
@@ -122,6 +116,32 @@ body, html {
 
 /* 반응형 디자인 */
 @media (max-width: 1024px) {
+    .text_screen {
+        margin-left: -475px;
+        width: 40%;
+        height: auto; /* 높이 자동 조정 */
+        top: 150px;
+        padding: 200px; /* 패딩 조정 */
+    }
+
+    .main_text {
+        font-size: 2.5em;
+    }
+
+    .sub_text1 {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 768px) {
+    .text_screen {
+        margin-left: -475px;
+        width: 40%;
+        height: auto; /* 높이 자동 조정 */
+        top: 150px;
+        padding: 200px; /* 패딩 조정 */
+    }
+
     .main_text {
         font-size: 2.5em;
     }
@@ -130,52 +150,12 @@ body, html {
         font-size: 1.3em;
     }
 
-    .head_screen .image-wrapper {
-        height: 80px;
-    }
-
-    .main_screen .image-wrapper {
-        height: 700px;
-    }
-}
-
-@media (max-width: 768px) {
-    .head_screen .image-wrapper {
-        height: 80px;
-    }
-
-    .main_screen .image-wrapper {
-        height: 700px;
-    }
-
-    .text_screen {
-        width: 90%;
-        height: auto; /* 높이 자동 조정 */
-        top: 150px;
-    }
-
-    .main_text {
-        font-size: 2em;
-    }
-
-    .sub_text1 {
-        font-size: 1.2em;
-    }
-
     .sub_text2 {
         font-size: 0.9em;
     }
 }
 
 @media (max-width: 480px) {
-    .head_screen .image-wrapper {
-        height: 60px;
-    }
-
-    .main_screen .image-wrapper {
-        height: 300px;
-    }
-
     .text_screen {
         width: 95%;
         height: auto; /* 높이 자동 조정 */

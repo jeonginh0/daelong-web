@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import '../style/button.css';
 import '../style/screen.css';
 
+const { kakao } = window;
+
 const MainPage = () => {
-    const [selectedPlace, setSelectedPlace] = useState(null);
     const [isUsageModalOpen, setIsUsageModalOpen] = useState(false);
     const [isStartModalOpen, setIsStartModalOpen] = useState(false);
     const [addresses, setAddresses] = useState(["", ""]); // 두 개의 주소 입력 상태 추가
+    const [middleCoordsString, setMiddleCoordsString] = useState('');
     const navigate = useNavigate();
     const usageModalRef = useRef();
     const startModalRef = useRef();
@@ -27,8 +29,70 @@ const MainPage = () => {
         };
     }, []);
 
+    // MainPage 컴포넌트 안의 handleSubmit 함수 내부
     const handleSubmit = () => {
-        navigate('/map/' + addresses.map(address => encodeURIComponent(address)).join(','));
+        const promises = addresses.map(address => {
+            return new Promise((resolve, reject) => {
+                const geocoder = new window.daum.maps.services.Geocoder(); // Geocoder 인스턴스 생성
+                geocoder.addressSearch(address, (result, status) => {
+                    if (status === window.daum.maps.services.Status.OK) {
+                        const coords = new window.daum.maps.LatLng(result[0].y, result[0].x); // 좌표 생성
+                        resolve(coords); // Promise resolve
+                    } else {
+                        reject(status); // Promise reject
+                    }
+                });
+            });
+        });
+
+        Promise.all(promises)
+            .then(coordsArray => {
+                // 좌표 배열을 이용하여 평균 좌표 계산
+                const totalCoords = coordsArray.reduce((acc, curr) => {
+                    return [acc[0] + curr.getLat(), acc[1] + curr.getLng()];
+                }, [0, 0]);
+                const averageCoords = [totalCoords[0] / coordsArray.length, totalCoords[1] / coordsArray.length];
+
+                // 평균 좌표를 파라미터로 지도 페이지로 네비게이션
+                const url = `/map?x=${averageCoords[1]}&y=${averageCoords[0]}`;
+                navigate(url);
+            })
+            .catch(error => {
+                console.error('Error converting address to coordinates:', error);
+            });
+    };
+
+    const handleAddAddress = () => {
+        setAddresses([...addresses, ""]);
+    };
+
+    const handleRemoveAddress = (index) => {
+        const newAddresses = addresses.filter((_, addrIndex) => addrIndex !== index);
+        setAddresses(newAddresses);
+    };
+
+    const openAddressSearch = (index) => {
+        new window.daum.Postcode({
+            oncomplete: (data) => {
+                setAddresses(prevAddresses => {
+                    const newAddresses = [...prevAddresses];
+                    newAddresses[index] = data.address;
+                    return newAddresses;
+                });
+            }
+        }).open();
+    };
+
+    const goMyPage = () => {
+        navigate("/mypage/");
+    };
+
+    const goLoginPage = () => {
+        navigate("/login/");
+    };
+
+    const goSignUpPage = () => {
+        navigate("/signup/");
     };
 
     const handleChange = (index, value) => {
@@ -36,22 +100,6 @@ const MainPage = () => {
         newAddresses[index] = value;
         setAddresses(newAddresses);
     };
-
-    const handleAddAddress = () => {
-        setAddresses([...addresses, ""]);
-    };
-
-    const goMyPage = () => {
-        navigate("/mypage/");
-    }
-
-    const goLoginPage = () => {
-        navigate("/login/");
-    }
-
-    const goSignUpPage = () => {
-        navigate("/signup/");
-    }
 
     return (
         <main>
@@ -64,7 +112,7 @@ const MainPage = () => {
                 <div className="signupBtn" onClick={goSignUpPage}>회원가입</div>
             </div>
             <div className="main_screen" style={{ overflow: 'auto' }}>
-                <img src="/mapd.png" alt="메인이미지" className="background_image" />
+                <img src="/map.png" alt="메인이미지" width="1920px" height="1900px"/>
                 <div className="text_screen">
                     <div className="overlay">
                         <h1 className="main_text">Meeting Service</h1>
@@ -90,17 +138,19 @@ const MainPage = () => {
                     <div className={`modal ${isStartModalOpen ? 'show' : ''}`} ref={startModalRef}>
                         <div className="modal-background" onClick={() => setIsStartModalOpen(false)}></div>
                         <div className={`modal-content ${isStartModalOpen ? 'show' : ''}`}>
-                            
+
                             <span className="close" onClick={() => setIsStartModalOpen(false)}>&times;</span>
                             {addresses.map((address, index) => (
-                                <div className="address-input-container">
+                                <div className="address-input-container" key={index}>
                                     <input
                                         type="text"
-                                        value={addresses[0]}
-                                        onChange={(e) => handleChange(0, e.target.value)}
+                                        value={addresses[index]}
+                                        onChange={(e) => handleChange(index, e.target.value)}
                                         placeholder="주소를 입력해주세요."
-                                        className="input-field"
+                                        className="input-field" onClick={() => openAddressSearch(index)}
                                     />
+                                    <button className="delete-button" onClick={() => handleRemoveAddress(index)}>-
+                                    </button>
                                     <br/>
                                 </div>
 
@@ -118,4 +168,5 @@ const MainPage = () => {
         </main>
     );
 };
+
 export default MainPage;
