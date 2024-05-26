@@ -39,7 +39,7 @@ const SignUpForm = () => {
     }
 
     return (
-        <div className="signup-container">
+        <div className="vid-container">
             <div className="head_screen">
                 <div className="logo_wrapper">
                     <img src="/teamlogo.png" alt="로고" width="200px" height="90px" onClick={goRootPage}/>
@@ -48,41 +48,42 @@ const SignUpForm = () => {
                 <div className="loginBtn" onClick={goLoginPage}>로그인</div>
                 <div className="signupBtn" onClick={goSignUpPage}>회원가입</div>
             </div>
-            <div className="signup-form">
-                <div className="text-size">
+            <div className="inner-container">
+                <div className="box">
                     <h1>회원가입 | SIGN UP</h1>
+                    <input
+                        type="text"
+                        value={id}
+                        onChange={(e) => setId(e.target.value)}
+                        placeholder="아이디 | ID"
+                    />
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="비밀번호 | Password"
+                    />
+                    <input
+                        type="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="이름 | Name"
+                    />
+                    <input
+                        type="nickname"
+                        value={nickname}
+                        onChange={(e) => setNickname(e.target.value)}
+                        placeholder="닉네임 | NickName"
+                    />
+                    <input
+                        type="e-mail"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="이메일 | Email"
+                    />
+                    <button onClick={handleSubmit}>가입하기</button>
+                    <p>이미 회원이신가요? <span className="signup" onClick={goLoginPage}>로그인 | Login</span></p>
                 </div>
-                <input
-                    type="text"
-                    value={id}
-                    onChange={(e) => setId(e.target.value)}
-                    placeholder="아이디 | ID"
-                />
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="비밀번호 | Password"
-                />
-                <input
-                    type="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="이름 | Name"
-                />
-                <input
-                    type="nickname"
-                    value={nickname}
-                    onChange={(e) => setNickname(e.target.value)}
-                    placeholder="닉네임 | NickName"
-                />
-                <input
-                    type="e-mail"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="이메일 | Email"
-                />
-                <button onClick={handleSubmit}>가입하기</button>
             </div>
         </div>
     );

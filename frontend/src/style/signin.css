@@ -3,7 +3,6 @@ body{
     padding:0;
     margin:0;
     font-family: 'Inter';
-
 }
 .vid-container{
     display: flex;
@@ -11,6 +10,7 @@ body{
     align-items: center;
     height: 100vh;
     margin: 0 auto;
+    background-image: url('/Users/jeonginho/Desktop/projects/dodam/daelongweb/frontend/public/mapd.png'); /* 배경 이미지 설정 */
 }
 .bgvid.back {
     position: fixed; right: 0; bottom: 0;
@@ -22,7 +22,7 @@ body{
 }
 .inner-container{
     width:400px;
-    height:600px;
+    height:500px;
     position:absolute;
     top:calc(50vh - 200px);
     left:calc(50vw - 200px);

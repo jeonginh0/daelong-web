@@ -75,7 +75,7 @@ const Map = () => {
                 placeOverlay.setMap(null);
             }
         }
-    }, [addresses, currCategory, center]);
+    }, [currCategory, center]);
 
     const searchPlaces = () => {
         if (!currCategory) {

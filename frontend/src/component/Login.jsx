@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {useNavigate} from "react-router-dom";
 import '../style/button.css';
 import '../style/screen.css';
-import '../style/login.css'; // 스타일 파일을 import
+import '../style/signin.css'
 
 
 const Login = () => {
@@ -33,7 +33,7 @@ const Login = () => {
     }
 
     return (
-        <div className="login-container">
+        <div className="vid-container">
             <div className="head_screen">
                 <div className="logo_wrapper">
                     <img src="/teamlogo.png" alt="로고" width="200px" height="90px" onClick={goRootPage}/>
@@ -42,23 +42,24 @@ const Login = () => {
                 <div className="loginBtn" onClick={goLoginPage}>로그인</div>
                 <div className="signupBtn" onClick={goSignUpPage}>회원가입</div>
             </div>
-            <div className="login-form">
-                <div className="text-size">
+            <div className="inner-container">
+                <div className="box">
                     <h1>로그인 | LOGIN</h1>
+                    <input
+                        type="text"
+                        value={id}
+                        onChange={(e) => setId(e.target.value)}
+                        placeholder="아이디 | ID"
+                    />
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="비밀번호 | Password"
+                    />
+                    <button onClick={handleLogin}>로그인</button>
+                    <p>회원이 아니신가요? <span className="signup" onClick={goSignUpPage}>회원가입 | Sign Up</span></p>
                 </div>
-                <input
-                    type="text"
-                    value={id}
-                    onChange={(e) => setId(e.target.value)}
-                    placeholder="아이디 | ID"
-                />
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="비밀번호 | Password"
-                />
-                <button onClick={handleLogin}>로그인</button>
             </div>
         </div>
     );
