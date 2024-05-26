@@ -74,11 +74,11 @@
 }
 
 #category li.on {
-    background: #eee;
+    background: #c9bafb;
 }
 
 #category li:hover {
-    background: #ffe6e6;
+    background: #c9bafb;
     border-left: 1px solid #acacac;
     margin-left: -1px;
 }
