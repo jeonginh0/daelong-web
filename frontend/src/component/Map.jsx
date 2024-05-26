@@ -16,6 +16,7 @@ const Map = () => {
 
     const navigate = useNavigate();
 
+    //중간지점 좌표 구하기
     useEffect(() => {
         if (addresses && addresses.length > 0) {
             const contentNode = document.createElement('div');
