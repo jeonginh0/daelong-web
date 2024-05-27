@@ -232,7 +232,8 @@ body, html {
 }
 
 .input-field {
-    padding: 20px;
+    width: 360px;
+    height: 55px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -392,40 +393,32 @@ body, html {
 
 @media (max-width: 768px) {
     .myPageBtn, .loginBtn, .signupBtn {
-        position: absolute;
         left: auto;
         right: 0;
-        top: auto;
+        top: 70px;
         transform: translateX(-50%);
     }
 
     .myPageBtn {
-        top: 10px;
+        top: 20px;
     }
 
     .loginBtn {
-        top: 60px;
+        top: 20px;
     }
 
     .signupBtn {
-        top: 110px;
+        top: 20px;
     }
 
-    .overlay {
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 5px;
+    .startServiceBtn {
+        left: 0%;
     }
 
-    .startServiceBtn, .expServiceBtn {
-        position: relative;
-        left: -35%;
-        top: 40%;
-        width: 90px;
-        height: 30px;
-        margin: 0px
+    .expServiceBtn {
+        left: 0%;
     }
+
 }
 
 @media (max-width: 480px) {
