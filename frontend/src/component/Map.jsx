@@ -31,7 +31,7 @@ const Map = () => {
         overlay.setContent(contentNode);
         setPlaceOverlay(overlay);
 
-        // 내 위치 가져오기
+        // 내 위치 가져오기.
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
                 const lat = position.coords.latitude;
