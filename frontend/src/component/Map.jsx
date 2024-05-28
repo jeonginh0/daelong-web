@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import "../style/map.css";
 import "../style/screen.css";
 import "../style/button.css";
+import {getCenter,basicCenterAlgorithm} from "./al/Center";
 
 const { kakao } = window;
 
@@ -77,6 +78,26 @@ const Map = () => {
             }
         }
     }, [currCategory, center]);
+
+    const setCenterMarker = (code) =>{
+        const {markers} = this.state;
+
+        if (!currCategory) {
+            return;
+        }
+        if (placeOverlay) {
+            placeOverlay.setMap(null);
+        }
+        removeMarker();
+
+        if(markers.length > 0){
+            const centerData = getCenter(markers, basicCenterAlgorithm()); //markers 배열 기반 중간지점 계산
+            const centerLat = centerData.lat;
+            const centerLon = centerData.lon;
+            const center = new window.kakao.maps.LatLng(centerLat, centerLon); // 중간 지점 좌표 생성
+            const places = new window.kakao.maps.services.Places();
+        }
+    }
 
     const searchPlaces = () => {
         if (!currCategory) {
