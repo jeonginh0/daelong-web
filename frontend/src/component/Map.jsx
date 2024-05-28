@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // useNavigate 훅을 가져옵니다
+import {useLocation, useNavigate} from 'react-router-dom';
+import generateCenter from '../utils/generateCenter';
 import "../style/map.css";
 import "../style/screen.css";
 import "../style/button.css";
@@ -7,6 +8,9 @@ import "../style/button.css";
 const { kakao } = window;
 
 const Map = () => {
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    const coords = JSON.parse(params.get('coords'));
     const [map, setMap] = useState(null);
     const [markers, setMarkers] = useState([]);
     const [currCategory, setCurrCategory] = useState('');
@@ -15,50 +19,29 @@ const Map = () => {
     const [myMarker, setMyMarker] = useState(null);
 
     const navigate = useNavigate(); // useNavigate를 초기화합니다
-    useEffect(() => {
-        const contentNode = document.createElement('div');
-        contentNode.className = 'placeinfo_wrap';
 
+    useEffect(() => {
         const mapContainer = document.getElementById('map');
-        const mapOptions = {
-            center: new kakao.maps.LatLng(center.lat, center.lng),
+        const mapOption = {
+            center: new kakao.maps.LatLng(37.5665, 126.9780),
             level: 5
         };
-        const newMap = new kakao.maps.Map(mapContainer, mapOptions);
-        setMap(newMap);
+        const map = new kakao.maps.Map(mapContainer, mapOption);
 
-        const overlay = new kakao.maps.CustomOverlay({ zIndex: 1 });
-        overlay.setContent(contentNode);
-        setPlaceOverlay(overlay);
-
-        // 내 위치 가져오기.
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position => {
-                const lat = position.coords.latitude;
-                const lng = position.coords.longitude;
-                const locPosition = new kakao.maps.LatLng(lat, lng);
-                setCenter({ lat, lng });
-                newMap.setCenter(locPosition);
-
-                // 내 위치에 마커 추가
-                const myLocationMarkerImage = new kakao.maps.MarkerImage('/img_1.png', new kakao.maps.Size(22, 30));
-                const marker = new kakao.maps.Marker({
-                    map: newMap,
-                    position: locPosition,
-                    image: myLocationMarkerImage
-                });
-                setMyMarker(marker);
+        coords.forEach(coord => {
+            const marker = new kakao.maps.Marker({
+                position: new kakao.maps.LatLng(coord[0], coord[1])
             });
-        }
+            marker.setMap(map);
+        });
 
-        kakao.maps.event.addListener(newMap, 'idle', searchPlaces);
-
-        return () => {
-            kakao.maps.event.removeListener(newMap, 'idle');
-            overlay.setMap(null);
-            removeMarker();
-        };
-    }, []);
+        const { centerLat, centerLng } = generateCenter(coords);
+        const centerMarker = new kakao.maps.Marker({
+            position: new kakao.maps.LatLng(centerLat, centerLng)
+        });
+        centerMarker.setMap(map);
+        map.setCenter(new kakao.maps.LatLng(centerLat, centerLng));
+    }, [coords]);
 
     useEffect(() => {
         if (currCategory) {
@@ -100,6 +83,7 @@ const Map = () => {
             // 처리 코드
         }
     };
+
 
     const displayPlaces = (places) => {
         // currCategory에 해당하는 카테고리의 엘리먼트가 존재하는지 확인
