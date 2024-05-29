@@ -46,7 +46,7 @@ const Map = () => {
 
         const { centerLat, centerLng } = generateCenter(coords); // center * 중심 좌표로 지정
 
-        const centerMarkerImage = new kakao.maps.MarkerImage('/img_1.png', new kakao.maps.Size(22, 30));
+        const centerMarkerImage = new kakao.maps.MarkerImage('/finalCenterMarker.png', new kakao.maps.Size(90, 59));
         const centerPosition = new kakao.maps.LatLng(centerLat, centerLng);
         const centerMarker = new kakao.maps.Marker({
             position: centerPosition,
