@@ -30,8 +30,8 @@ const Map = () => {
             center: new kakao.maps.LatLng(center.lat, center.lng),
             level: 5
         };
-        const newMap = new kakao.maps.Map(mapContainer, mapOptions);
-        setMap(newMap);
+        const map = new kakao.maps.Map(mapContainer, mapOptions);
+        setMap(map);
 
         const overlay = new kakao.maps.CustomOverlay({ zIndex: 1 });
         overlay.setContent(contentNode);
@@ -44,38 +44,41 @@ const Map = () => {
             marker.setMap(map);
         });
 
-        const { centerLat, centerLng } = generateCenter(coords);
+        const { centerLat, centerLng } = generateCenter(coords); // center * 중심 좌표로 지정
+
+        const centerMarkerImage = new kakao.maps.MarkerImage('/img_1.png', new kakao.maps.Size(22, 30));
+        const centerPosition = new kakao.maps.LatLng(centerLat, centerLng);
         const centerMarker = new kakao.maps.Marker({
-            position: new kakao.maps.LatLng(centerLat, centerLng)
+            position: centerPosition,
+            image: centerMarkerImage
         });
         centerMarker.setMap(map);
 
-        map.setCenter(new kakao.maps.LatLng(centerLat, centerLng));
+        // 중심을 설정한 후에 다시 지도의 중심을 중심지점으로 설정
+        map.setCenter(centerPosition);
 
-        // 내 위치 가져오기
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position => {
-                const lat = position.coords.latitude;
-                const lng = position.coords.longitude;
-                const locPosition = new kakao.maps.LatLng(lat, lng);
-                setCenter({ lat, lng });
-                newMap.setCenter(locPosition);
+        kakao.maps.event.addListener(map, 'idle', searchPlaces);
 
-                // 내 위치에 마커 추가
-                const myLocationMarkerImage = new kakao.maps.MarkerImage('/img_1.png', new kakao.maps.Size(22, 30));
-                const marker = new kakao.maps.Marker({
-                    map: newMap,
-                    position: locPosition,
-                    image: myLocationMarkerImage
-                });
-                setMyMarker(marker);
-            });
-        }
-
-        kakao.maps.event.addListener(newMap, 'idle', searchPlaces);
-
-        return () => {
-            kakao.maps.event.removeListener(newMap, 'idle');
+        return () => {// 내 위치 가져오기
+            // if (navigator.geolocation) {
+            //     navigator.geolocation.getCurrentPosition(position => {
+            //         const lat = position.coords.latitude;
+            //         const lng = position.coords.longitude;
+            //         const locPosition = new kakao.maps.LatLng(lat, lng);
+            //         setCenter({ lat, lng });
+            //         map.setCenter(locPosition);
+            //
+            //         // 내 위치에 마커 추가
+            //         const myLocationMarkerImage = new kakao.maps.MarkerImage('/img_1.png', new kakao.maps.Size(22, 30));
+            //         const marker = new kakao.maps.Marker({
+            //             map: map,
+            //             position: locPosition,
+            //             image: myLocationMarkerImage
+            //         });
+            //         setMyMarker(marker);
+            //     });
+            // }
+            kakao.maps.event.removeListener(map, 'idle');
             overlay.setMap(null);
             removeMarker();
         };
@@ -100,11 +103,12 @@ const Map = () => {
             placeOverlay.setMap(null);
         }
         removeMarker();
+        const { centerLat, centerLng } = generateCenter(coords);
 
         const ps = new kakao.maps.services.Places();
-        const locPosition = new kakao.maps.LatLng(center.lat, center.lng);
+        const centerPosition = new kakao.maps.LatLng(centerLat, centerLng); // 중심 좌표
         const options = {
-            location: locPosition,
+            location: centerPosition,
             radius: 5000, // 5km 반경
             useMapBounds: false
         };
