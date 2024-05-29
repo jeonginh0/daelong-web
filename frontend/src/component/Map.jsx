@@ -60,24 +60,6 @@ const Map = () => {
         kakao.maps.event.addListener(map, 'idle', searchPlaces);
 
         return () => {// 내 위치 가져오기
-            // if (navigator.geolocation) {
-            //     navigator.geolocation.getCurrentPosition(position => {
-            //         const lat = position.coords.latitude;
-            //         const lng = position.coords.longitude;
-            //         const locPosition = new kakao.maps.LatLng(lat, lng);
-            //         setCenter({ lat, lng });
-            //         map.setCenter(locPosition);
-            //
-            //         // 내 위치에 마커 추가
-            //         const myLocationMarkerImage = new kakao.maps.MarkerImage('/img_1.png', new kakao.maps.Size(22, 30));
-            //         const marker = new kakao.maps.Marker({
-            //             map: map,
-            //             position: locPosition,
-            //             image: myLocationMarkerImage
-            //         });
-            //         setMyMarker(marker);
-            //     });
-            // }
             kakao.maps.event.removeListener(map, 'idle');
             overlay.setMap(null);
             removeMarker();
@@ -150,7 +132,7 @@ const Map = () => {
     };
 
     const addMarker = (position, order) => {
-        const imageSrc = 'lastmarker.png';
+        const imageSrc = 'finalImage.png';
         const imageSize = new kakao.maps.Size(27, 28);
         const imgOptions = {
             spriteSize: new kakao.maps.Size(72, 208), // 스프라이트 이미지의 전체 크기
@@ -250,17 +232,22 @@ const Map = () => {
             </div>
             <div id="map" className="map"></div>
             <ul id="category">
+                <li id="SW8" className={currCategory === 'SW8' ? 'on' : ''} data-order="4"
+                    onClick={() => onClickCategory('SW8')}>
+                    <span className="category_bg station"></span>
+                    지하철
+                </li>
                 <li id="FD6" className={currCategory === 'FD6' ? 'on' : ''} data-order="0"
                     onClick={() => onClickCategory('FD6')}>
                     <span className="category_bg food"></span>
                     음식점
                 </li>
-                <li id="CE7" className={currCategory === 'CE7' ? 'on' : ''} data-order="4"
+                <li id="CE7" className={currCategory === 'CE7' ? 'on' : ''} data-order="1"
                     onClick={() => onClickCategory('CE7')}>
                     <span className="category_bg cafe"></span>
                     카페
                 </li>
-                <li id="CS2" className={currCategory === 'CS2' ? 'on' : ''} data-order="5"
+                <li id="CS2" className={currCategory === 'CS2' ? 'on' : ''} data-order="2"
                     onClick={() => onClickCategory('CS2')}>
                     <span className="category_bg store"></span>
                     편의점
