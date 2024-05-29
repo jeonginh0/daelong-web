@@ -4,7 +4,7 @@ import '../style/button.css';
 import '../style/screen.css';
 
 const { kakao } = window;
-//
+
 const MainPage = () => {
     const [isUsageModalOpen, setIsUsageModalOpen] = useState(false);
     const [isStartModalOpen, setIsStartModalOpen] = useState(false);
