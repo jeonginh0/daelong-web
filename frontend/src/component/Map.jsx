@@ -46,7 +46,7 @@ const Map = () => {
 
         const { centerLat, centerLng } = generateCenter(coords); // center * 중심 좌표로 지정
 
-        const centerMarkerImage = new kakao.maps.MarkerImage('/finalCenterMarker.png', new kakao.maps.Size(90, 59));
+        const centerMarkerImage = new kakao.maps.MarkerImage('/centerM.png', new kakao.maps.Size(90, 59));
         const centerPosition = new kakao.maps.LatLng(centerLat, centerLng);
         const centerMarker = new kakao.maps.Marker({
             position: centerPosition,
@@ -132,7 +132,7 @@ const Map = () => {
     };
 
     const addMarker = (position, order) => {
-        const imageSrc = 'finalImage.png';
+        const imageSrc = 'allmarker.png';
         const imageSize = new kakao.maps.Size(27, 28);
         const imgOptions = {
             spriteSize: new kakao.maps.Size(72, 208), // 스프라이트 이미지의 전체 크기
