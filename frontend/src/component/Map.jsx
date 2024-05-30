@@ -1,72 +1,70 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
+import generateCenter from '../utils/generateCenter';
 import "../style/map.css";
 import "../style/screen.css";
 import "../style/button.css";
-import {getCenter,basicCenterAlgorithm} from "./al/Center";
 
 const { kakao } = window;
 
 const Map = () => {
-    const { addresses } = useParams();
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    const coords = JSON.parse(params.get('coords'));
+
     const [map, setMap] = useState(null);
     const [markers, setMarkers] = useState([]);
     const [currCategory, setCurrCategory] = useState('');
     const [placeOverlay, setPlaceOverlay] = useState(null);
-    const [center, setCenter] = useState({ lat: 35.1435, lng: 129.0335 });
+    const [center, setCenter] = useState({ lat: 35.1435, lng: 129.0335 }); // 기본 중심 좌표
+    const [myMarker, setMyMarker] = useState(null);
 
-    const navigate = useNavigate();
+    const navigate = useNavigate(); // useNavigate를 초기화합니다
 
-    //중간지점 좌표 구하기
     useEffect(() => {
-        if (addresses && addresses.length > 0) {
-            const contentNode = document.createElement('div');
-            contentNode.className = 'placeinfo_wrap';
+        const contentNode = document.createElement('div');
+        contentNode.className = 'placeinfo_wrap';
 
-            const mapContainer = document.getElementById('map');
-            const mapOptions = {
-                center: new kakao.maps.LatLng(center.lat, center.lng),
-                level: 5
-            };
-            const newMap = new kakao.maps.Map(mapContainer, mapOptions);
-            setMap(newMap);
+        const mapContainer = document.getElementById('map');
+        const mapOptions = {
+            center: new kakao.maps.LatLng(center.lat, center.lng),
+            level: 5
+        };
+        const map = new kakao.maps.Map(mapContainer, mapOptions);
+        setMap(map);
 
-            const overlay = new kakao.maps.CustomOverlay({ zIndex: 1 });
-            overlay.setContent(contentNode);
-            setPlaceOverlay(overlay);
+        const overlay = new kakao.maps.CustomOverlay({ zIndex: 1 });
+        overlay.setContent(contentNode);
+        setPlaceOverlay(overlay);
 
-            const geocoder = new kakao.maps.services.Geocoder();
-            const addressArray = addresses.split(',');
-
-            const coordsArray = [];
-            addressArray.forEach((address, index) => {
-                geocoder.addressSearch(decodeURIComponent(address), (result, status) => {
-                    if (status === kakao.maps.services.Status.OK) {
-                        const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-                        coordsArray.push(coords);
-
-                        if (coordsArray.length === addressArray.length) {
-                            const midLat = coordsArray.reduce((sum, coords) => sum + coords.getLat(), 0) / coordsArray.length;
-                            const midLng = coordsArray.reduce((sum, coords) => sum + coords.getLng(), 0) / coordsArray.length;
-                            const midPoint = new kakao.maps.LatLng(midLat, midLng);
-
-                            newMap.setCenter(midPoint);
-                            setCenter({ lat: midLat, lng: midLng });
-
-                            const marker = new kakao.maps.Marker({
-                                position: midPoint,
-                                map: newMap
-                            });
-                            setMarkers([marker]);
-                        }
-                    }
-                });
+        coords.forEach(coord => {
+            const marker = new kakao.maps.Marker({
+                position: new kakao.maps.LatLng(coord[0], coord[1])
             });
-        } else {
-            // addresses 값이 없을 때의 처리
-            console.log('주소 값이 없습니다.');
-        }
-    }, [addresses]);
+            marker.setMap(map);
+        });
+
+        const { centerLat, centerLng } = generateCenter(coords); // center * 중심 좌표로 지정
+
+        const centerMarkerImage = new kakao.maps.MarkerImage('/centerM.png', new kakao.maps.Size(90, 59));
+        const centerPosition = new kakao.maps.LatLng(centerLat, centerLng);
+        const centerMarker = new kakao.maps.Marker({
+            position: centerPosition,
+            image: centerMarkerImage
+        });
+        centerMarker.setMap(map);
+
+        // 중심을 설정한 후에 다시 지도의 중심을 중심지점으로 설정
+        map.setCenter(centerPosition);
+
+        kakao.maps.event.addListener(map, 'idle', searchPlaces);
+
+        return () => {// 내 위치 가져오기
+            kakao.maps.event.removeListener(map, 'idle');
+            overlay.setMap(null);
+            removeMarker();
+        };
+    }, []);
 
     useEffect(() => {
         if (currCategory) {
@@ -79,26 +77,6 @@ const Map = () => {
         }
     }, [currCategory, center]);
 
-    const setCenterMarker = (code) =>{
-        const {markers} = this.state;
-
-        if (!currCategory) {
-            return;
-        }
-        if (placeOverlay) {
-            placeOverlay.setMap(null);
-        }
-        removeMarker();
-
-        if(markers.length > 0){
-            const centerData = getCenter(markers, basicCenterAlgorithm()); //markers 배열 기반 중간지점 계산
-            const centerLat = centerData.lat;
-            const centerLon = centerData.lon;
-            const center = new window.kakao.maps.LatLng(centerLat, centerLon); // 중간 지점 좌표 생성
-            const places = new window.kakao.maps.services.Places();
-        }
-    }
-
     const searchPlaces = () => {
         if (!currCategory) {
             return;
@@ -107,12 +85,13 @@ const Map = () => {
             placeOverlay.setMap(null);
         }
         removeMarker();
+        const { centerLat, centerLng } = generateCenter(coords);
 
         const ps = new kakao.maps.services.Places();
-        const locPosition = new kakao.maps.LatLng(center.lat, center.lng);
+        const centerPosition = new kakao.maps.LatLng(centerLat, centerLng); // 중심 좌표
         const options = {
-            location: locPosition,
-            radius: 5000,
+            location: centerPosition,
+            radius: 5000, // 5km 반경
             useMapBounds: false
         };
 
@@ -130,18 +109,22 @@ const Map = () => {
     };
 
     const displayPlaces = (places) => {
+        // currCategory에 해당하는 카테고리의 엘리먼트가 존재하는지 확인
         const categoryElement = document.getElementById(currCategory);
         if (!categoryElement) {
             console.error(`Element with id ${currCategory} does not exist.`);
             return;
         }
 
+        // 몇번째 카테고리가 선택되어 있는지 얻어옵니다
+        // 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
         var order = categoryElement.getAttribute('data-order');
 
-        for (var i = 0; i < places.length; i++) {
+        // 나머지 코드는 그대로 유지합니다
+        for ( var i=0; i<places.length; i++ ) {
             var marker = addMarker(new kakao.maps.LatLng(places[i].y, places[i].x), order);
-            (function (marker, place) {
-                kakao.maps.event.addListener(marker, 'click', function () {
+            (function(marker, place) {
+                kakao.maps.event.addListener(marker, 'click', function() {
                     displayPlaceInfo(place);
                 });
             })(marker, places[i]);
@@ -149,12 +132,12 @@ const Map = () => {
     };
 
     const addMarker = (position, order) => {
-        const imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png';
+        const imageSrc = 'allmarker.png';
         const imageSize = new kakao.maps.Size(27, 28);
         const imgOptions = {
-            spriteSize: new kakao.maps.Size(36, 37),
-            spriteOrigin: new kakao.maps.Point(0, order * 46),
-            offset: new kakao.maps.Point(13, 36)
+            spriteSize: new kakao.maps.Size(72, 208), // 스프라이트 이미지의 전체 크기
+            spriteOrigin: new kakao.maps.Point(46, order * 36), // 스프라이트 이미지에서 해당 마커 이미지의 위치
+            offset: new kakao.maps.Point(11, 28)
         };
         const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions);
         const marker = new kakao.maps.Marker({
@@ -199,6 +182,8 @@ const Map = () => {
     };
 
     const onClickCategory = (id) => {
+        // 현재 클릭된 카테고리의 id와 선택된 카테고리의 id를 비교하여
+        // 같으면 .on 클래스를 추가하고, 다르면 .on 클래스를 제거합니다.
         const categoryItems = document.querySelectorAll('#category li');
         categoryItems.forEach(item => {
             if (item.id === id) {
@@ -208,6 +193,7 @@ const Map = () => {
             }
         });
 
+        // 선택된 카테고리를 상태에 저장합니다.
         if (currCategory === id) {
             setCurrCategory('');
         } else {
@@ -216,11 +202,11 @@ const Map = () => {
     };
 
     const handleRetry = () => {
-        navigate("/");
+        navigate("/"); // "/" 경로로 이동합니다
     };
 
     const goRootPage = () => {
-        navigate("/");
+        navigate("/"); // "/" 경로로 이동합니다
     };
 
     const goMyPage = () => {
@@ -246,17 +232,22 @@ const Map = () => {
             </div>
             <div id="map" className="map"></div>
             <ul id="category">
+                <li id="SW8" className={currCategory === 'SW8' ? 'on' : ''} data-order="4"
+                    onClick={() => onClickCategory('SW8')}>
+                    <span className="category_bg station"></span>
+                    지하철
+                </li>
                 <li id="FD6" className={currCategory === 'FD6' ? 'on' : ''} data-order="0"
                     onClick={() => onClickCategory('FD6')}>
                     <span className="category_bg food"></span>
                     음식점
                 </li>
-                <li id="CE7" className={currCategory === 'CE7' ? 'on' : ''} data-order="4"
+                <li id="CE7" className={currCategory === 'CE7' ? 'on' : ''} data-order="1"
                     onClick={() => onClickCategory('CE7')}>
                     <span className="category_bg cafe"></span>
                     카페
                 </li>
-                <li id="CS2" className={currCategory === 'CS2' ? 'on' : ''} data-order="5"
+                <li id="CS2" className={currCategory === 'CS2' ? 'on' : ''} data-order="2"
                     onClick={() => onClickCategory('CS2')}>
                     <span className="category_bg store"></span>
                     편의점
