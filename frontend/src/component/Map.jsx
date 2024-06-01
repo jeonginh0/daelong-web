@@ -17,7 +17,8 @@ const Map = () => {
     const [currCategory, setCurrCategory] = useState('');
     const [placeOverlay, setPlaceOverlay] = useState(null);
     const [center, setCenter] = useState({ lat: 35.1435, lng: 129.0335 }); // 기본 중심 좌표
-    const [myMarker, setMyMarker] = useState(null);
+    const [destination, setDestination] = useState(null); // 목적지 좌표 상태 변수
+    const [path, setPath] = useState(null); // 경로 상태 변수
 
     const navigate = useNavigate(); // useNavigate를 초기화합니다
 
@@ -28,7 +29,7 @@ const Map = () => {
         const mapContainer = document.getElementById('map');
         const mapOptions = {
             center: new kakao.maps.LatLng(center.lat, center.lng),
-            level: 5
+            level: 8
         };
         const map = new kakao.maps.Map(mapContainer, mapOptions);
         setMap(map);
