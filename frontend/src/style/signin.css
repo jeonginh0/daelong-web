@@ -11,7 +11,7 @@ body{
     align-items: center;
     height: 100vh;
     margin: 0 auto;
-    background-image: url('/Users/jeonginho/Desktop/projects/dodam/daelongweb/frontend/public/mapd.png'); /* 배경 이미지 설정 */
+    background-image: url('../../public/mapd.png'); /* 배경 이미지 설정 */
 }
 .bgvid.back {
     position: fixed; right: 0; bottom: 0;
