@@ -41,7 +41,7 @@
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    height: 1080px; /* 화면 전체 높이를 채우도록 설정 */
+    height: 728px; /* 화면 전체 높이를 채우도록 설정 */
     margin-top: 80px; /* head_screen 높이 만큼의 마진 추가 */
     position: relative; /* 배경 이미지를 위해 position 설정 */
     /*background-image: url('../../public/mapd.png'); !* 배경 이미지 설정 *!*/

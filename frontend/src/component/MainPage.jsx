@@ -161,7 +161,7 @@ const MainPage = () => {
             </div>
 
             <div className="main_screen" style={{overflow: 'auto'}}>
-                <img src="/mainpage_Img.png" alt="메인이미지" width="1920px" height="1080px"/>
+                <img src="/mainpage_Img.png" alt="메인이미지" width="1920px" height="728px"/>
                 <div className="text_screen">
                     <div className="overlay">
                             <h1 className="main_text">대롱대롱</h1>
