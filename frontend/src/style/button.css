@@ -1,11 +1,11 @@
 /* 기본 스타일 */
-body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
+/*body, html {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    overflow: hidden;*/
+/*}*/
 
 /* 시작하기 버튼 */
 .startServiceBtn {
@@ -356,97 +356,42 @@ body, html {
     justify-content: center;
 }
 
-
-/* 반응형 디자인 */
-@media (max-width: 1024px) {
-    .myPageBtn, .loginBtn, .signupBtn {
-        left: auto;
-        right: 0;
-        top: 70px;
-        transform: translateX(-50%);
-    }
-
-    .myPageBtn {
-        top: 20px;
-        margin-right: 200px;
-    }
-
-    .loginBtn {
-        top: 20px;
-        margin-right: 90px;
-    }
-
-    .signupBtn {
-        top: 20px;
-        margin-right: -20px;
-    }
-
-    .startServiceBtn {
-        left: 0%;
-    }
-
-    .expServiceBtn {
-        left: 0%;
-    }
+.signImg {
+    position: absolute; /* 상단 고정 */
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    width: 100%;
+    z-index: 2000;
+    top: 20px;
 }
 
-@media (max-width: 768px) {
-    .myPageBtn, .loginBtn, .signupBtn {
-        position: absolute;
-        left: auto;
-        right: 0;
-        top: auto;
-        transform: translateX(-50%);
-    }
-
-    .myPageBtn {
-        top: 10px;
-    }
-
-    .loginBtn {
-        top: 60px;
-    }
-
-    .signupBtn {
-        top: 110px;
-    }
-
-    .overlay {
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .startServiceBtn, .expServiceBtn {
-        position: relative;
-        left: -35%;
-        top: 40%;
-        width: 90px;
-        height: 30px;
-        margin: 0px
-    }
+.signImg img {
+    position: relative;
 }
 
-@media (max-width: 480px) {
-    .myPageBtn, .loginBtn, .signupBtn {
-        width: 100px;
-    }
+.hoverBox {
+    display: none;
+    position: absolute;
+    top: 50px; /* 이미지를 기준으로 위치를 조정 */
+    right: 20px; /* 이미지를 기준으로 위치를 조정 */
+    width: 150px; /* 네모 창의 너비 */
+    height: auto; /* 네모 창의 높이를 자동으로 조정 */
+    background-color: rgba(0, 0, 0, 0.75); /* 배경색 및 투명도 */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 3000;
+}
 
-    .startServiceBtn, .expServiceBtn {
-        width: 150px;
-        margin: 5px;
-        display: block;
-    }
+.signImg img:hover + .hoverBox,
+.signImg .hoverBox:hover {
+    display: block;
+}
 
-    .overlay {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .startServiceBtn, .expServiceBtn {
-        width: 150px;
-        margin: 5px 0;
-        display: block;
-    }
+.hoverBox a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
 }
