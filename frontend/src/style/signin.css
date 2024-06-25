@@ -64,29 +64,38 @@ input::placeholder {
 .box input:focus,.box input:active,.box button:focus,.box button:active{
     outline:none;
 }
-.box button{
-    background: #2c0375;
-    border:0;
-    color:#fff;
-    padding:10px;
-    font-size:20px;
-    width:330px;
-    margin:20px auto;
-    display:block;
-    cursor:pointer;
+.box button {
+    background: #A95AF7;
+    border: 0;
+    color: #fff;
+    padding: 10px;
+    font-size: 20px;
+    width: 330px;
+    margin: 20px auto;
+    display: block;
+    cursor: pointer;
     border-radius: 7px;
+    transition: background 0.3s; /* 부드러운 전환 효과 추가 */
 }
-.box button:active{
-    background:#000000;
+
+.box button:hover {
+    background: #6202FF; /* 호버 시 배경색 */
 }
-.box p{
-    font-size:14px;
-    text-align:center;
+
+.box button:active {
+    background: #000000;
 }
-.box p span{
-    cursor:pointer;
+
+.box p {
+    font-size: 14px;
+    text-align: center;
+}
+
+.box p span {
+    cursor: pointer;
     color: #636365;
 }
+
 
 @media screen and (max-width: 986px) {
     .bgvid{

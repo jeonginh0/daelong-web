@@ -56,7 +56,7 @@
 }
 
 /* 마이페이지 버튼 */
-.myPageBtn {
+/*.myPageBtn {
     position: absolute;
     width: 100px;
     height: 40px;
@@ -83,6 +83,7 @@
 }
 
 /* 로그인 버튼 */
+/*
 .loginBtn {
     position: absolute;
     width: 100px;
@@ -110,6 +111,7 @@
 }
 
 /* 회원가입 버튼 */
+/*
 .signupBtn {
     position: absolute;
     width: 100px;
@@ -137,6 +139,11 @@
 }
 
 /* 모달 스타일 */
+
+
+
+
+
 .modal {
     position: fixed;
     top: 0;
@@ -372,18 +379,35 @@
 }
 
 .hoverBox {
-    display: none;
-    position: absolute;
-    top: 50px; /* 이미지를 기준으로 위치를 조정 */
-    right: 20px; /* 이미지를 기준으로 위치를 조정 */
-    width: 150px; /* 네모 창의 너비 */
-    height: auto; /* 네모 창의 높이를 자동으로 조정 */
-    background-color: rgba(0, 0, 0, 0.75); /* 배경색 및 투명도 */
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 3000;
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 3000;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 추가 */
 }
+
+.hoverBox button {
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  color: black;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* 배경색 변경 애니메이션 */
+}
+
+.hoverBox button:hover {
+  background-color: #6202FF; /* 호버 시 배경색 변경 */
+}
+
+
 
 .signImg img:hover + .hoverBox,
 .signImg .hoverBox:hover {
