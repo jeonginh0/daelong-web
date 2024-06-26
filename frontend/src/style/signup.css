@@ -21,70 +21,101 @@
     position: absolute;
 }
 .inner-container{
-    width:400px;
-    height:600px;
-    position:absolute;
-    top:calc(50vh - 200px);
-    left:calc(50vw - 200px);
+    width:2000px;
+    height:1200px;
+    position: absolute;
+    top:calc(50vh - 600px);
+    left:calc(50vw - 1000px);
     overflow:hidden;
     border-radius: 7px;
 }
-.box{
+.box2{
     position:absolute;
     height:100%;
     width:100%;
     font-family:'Inter';
-    color:#fff;
-    background:rgba(0, 0, 0, 28%);
-    padding:30px 0px;
+    color:#000000;
+    background:rgba(0, 0, 0, 0%); /* background:rgba(0, 0, 0, 28%); */
+    padding:350px 0px;
     border-radius: 7px;
 }
-.box h1{
+.box2 h1{
     text-align:center;
-    margin:30px 0;
+    margin:20px 0;
     font-size:30px;
 }
-.box input{
+.box2 input{ /*id, pw box*/
     display:block;
-    width:300px;
+    width:800px;
     margin:20px auto;
     padding:15px;
-    background:rgba(0,0,0,0.2);
+    background:rgba(0,0,0,0.3);
     color:#fff;
-    border-radius: 7px;
+    border-radius: 12px;
     border:0;
 }
+
 input::placeholder {
-    color: rgb(182, 171, 163);
+    color: rgb(0,0,0);
 }
+
 .signup{
-    color: rgb(182, 171, 163)!important;
+    color: rgb(0, 0, 0) !important;
 }
-.box input:focus,.box input:active,.box button:focus,.box button:active{
+.box2 input:focus,.box2 input:active,.box2 button:focus,.box2 button:active{
     outline:none;
 }
-.box button{
+.box2 button{
     background: #2c0375;
     border:0;
     color:#fff;
     padding:10px;
     font-size:20px;
-    width:330px;
-    margin:20px auto;
+    width:840px;
+    margin:30px auto;
     display:block;
     cursor:pointer;
-    border-radius: 7px;
+    border-radius: 12px;
 }
-.box button:active{
+.box2 button:active{
     background:#000000;
 }
-.box p{
+
+
+.box2 p{
     font-size:14px;
     text-align:center;
 }
-.box p span{
+.box2 p span{
     cursor:pointer;
     color: #636365;
+}
+
+.box2 .agree-container {
+    background:rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 480px;
+    margin: 40px auto;
+    border-radius: 15px;
+}
+
+.box2 .agree-container input[type="checkbox"] {
+    display: block;
+    width: auto;
+    margin-left: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border-radius: 15px;
+    border: 0;
+}
+
+.box2 .agree-container label {
+    color: #000000;
+    font-size: 16px;
+    flex: 1;
+    text-align: center; /* 텍스트를 가운데 정렬 */
 }
 
 @media screen and (max-width: 986px) {

@@ -21,25 +21,28 @@
 .inner {
     position: absolute;
 }
-.inner-container{
-    width:400px;
-    height:500px;
-    position:absolute;
-    top:calc(50vh - 200px);
-    left:calc(50vw - 200px);
-    overflow:hidden;
+
+.inner-container {
+    width: 2000px;
+    height: 1200px;
+    position: absolute;
+    top: calc(50vh - 600px);
+    left: calc(50vw - 1000px);
+    overflow: hidden;
     border-radius: 7px;
 }
-.box{
-    position:absolute;
-    height:100%;
-    width:100%;
-    font-family:'Inter';
-    color:#fff;
-    background:rgba(0, 0, 0, 28%);
-    padding:30px 0px;
+
+.box {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    font-family: 'Inter';
+    color: #000000;
+    background: rgba(0, 0, 0, 0%);
+    padding: 360px 0px;
     border-radius: 7px;
 }
+
 .box h1{
     text-align:center;
     margin:30px 0;
@@ -47,34 +50,34 @@
 }
 .box input{
     display:block;
-    width:300px;
+    width:800px;
     margin:20px auto;
-    padding:15px;
+    padding:25px;
     background:rgba(0,0,0,0.2);
-    color:#fff;
-    border-radius: 7px;
+    color:#FFFFFF;
+    border-radius: 15px;
     border:0;
 }
 input::placeholder {
-    color: rgb(182, 171, 163);
+    color: rgb(0, 0, 0);
 }
 .signup{
-    color: rgb(182, 171, 163)!important;
+    color: rgb(0, 0, 0)!important;
 }
 .box input:focus,.box input:active,.box button:focus,.box button:active{
     outline:none;
 }
 .box button {
-    background: #A95AF7;
+    background: #2c0375;
     border: 0;
     color: #fff;
-    padding: 10px;
+    padding: 15px;
     font-size: 20px;
-    width: 330px;
+    width: 800px;
     margin: 20px auto;
     display: block;
     cursor: pointer;
-    border-radius: 7px;
+    border-radius: 15px;
     transition: background 0.3s; /* 부드러운 전환 효과 추가 */
 }
 
@@ -96,7 +99,46 @@ input::placeholder {
     color: #636365;
 }
 
+.remember-container {
+    border: 0;
+    color: #FFFFFF;
+    padding: 10px;
+    font-size: 18px;
+    margin: 5px auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 800px;
+    position: relative; /* 상대적 위치 지정 */
+}
 
+.remember-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000000;
+    margin-right: 10px; /* Space between checkbox and label */
+    border-radius: 4px;
+    position: relative; /* 상대적 위치 지정 */
+
+}
+
+.remember-checkbox.checked {
+    background-color: #A95AF7; /* 체크 시 배경색 변경 */
+}
+
+.remember-container label {
+    color: rgb(0, 0, 0); /* Text color */
+    cursor: pointer; /* Pointer cursor for label */
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+    margin: 20px auto;
+}
 @media screen and (max-width: 986px) {
     .bgvid{
         height: 100px!important;
