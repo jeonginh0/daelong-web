@@ -105,7 +105,7 @@ const MainPage = () => {
     const handleMouseMove = (e) => {
         if (!isDragging.current) return;
         const x = e.pageX - usageContainerRef.current.offsetLeft;
-        const walk = (x - startX.current) * 2   ; // 2 is the speed factor
+        const walk = (x - startX.current) * 2; // 2 is the speed factor
         usageContainerRef.current.scrollLeft = scrollLeft.current - walk;
     };
 
@@ -121,10 +121,10 @@ const MainPage = () => {
         <main>
             <div className="head_screen">
                 <div className="logo_wrapper">
-                    <img src="/teamlogo.png" alt="로고" width="200px" height="90px"/>
+                    <img src="/teamlogo.png" alt="로고" width="200px" height="90px" />
                 </div>
                 <div className="signImg">
-                    <img src="/human.png" alt="sign Image" width="50px" height="50px"/>
+                    <img src="/human.png" alt="sign Image" width="50px" height="50px" />
                     <div className="hoverBox">
                         <button className="button" onClick={goLoginPage}>로그인</button>
                         <button className="button" onClick={goSignUpPage}>회원가입</button>
@@ -133,8 +133,7 @@ const MainPage = () => {
                 </div>
             </div>
 
-            <div className="main_screen" style={{overflow: 'auto'}}>
-                <img src="/mainpage_Img.png" alt="메인이미지" width="1920px" height="1080px"/>
+            <div className="main_screen">
                 <div className="text_screen">
                     <div className="overlay">
                         <h1 className="main_text">대롱대롱</h1>
@@ -144,6 +143,15 @@ const MainPage = () => {
                         </div>
                     </div>
                 </div>
+                {isUsageModalOpen && (
+                    <div className={`modal ${isUsageModalOpen ? 'show' : ''}`} ref={usageModalRef}>
+                        <div className="modal-background" onClick={() => setIsUsageModalOpen(false)}></div>
+                        <div className={`modal-content ${isUsageModalOpen ? 'show' : ''}`}>
+                            <span className="close" onClick={() => setIsUsageModalOpen(false)}>&times;</span>
+                            <p>여기에 사용 방법에 대한 내용을 작성합니다.</p>
+                        </div>
+                    </div>
+                )}
                 {isStartModalOpen && (
                     <div className={`modal ${isStartModalOpen ? 'show' : ''}`} ref={startModalRef}>
                         <div className="modal-background" onClick={() => setIsStartModalOpen(false)}></div>
@@ -156,47 +164,52 @@ const MainPage = () => {
                                         value={addresses[index]}
                                         onChange={(e) => handleChange(index, e.target.value)}
                                         placeholder="주소를 입력해주세요."
-                                        className="input-field" onClick={() => openAddressSearch(index)}
+                                        className="input-field"
+                                        onClick={() => openAddressSearch(index)}
                                     />
-                                    <button className="delete-button" onClick={() => handleRemoveAddress(index)}>-
+                                    <button className="delete-button" onClick={() => handleRemoveAddress(index)}>
+                                        -
                                     </button>
-                                    <br/>
+                                    <br />
                                 </div>
-
                             ))}
-                            <button className="add-button" onClick={handleAddAddress}>만날 사람 추가하기!</button>
-                            <button className="meet-button" onClick={handleSubmit}>여기서 만나자!</button>
+                            <button className="add-button" onClick={handleAddAddress}>
+                                만날 사람 추가하기!
+                            </button>
+                            <button className="meet-button" onClick={handleSubmit}>
+                                여기서 만나자!
+                            </button>
                         </div>
-
                     </div>
                 )}
             </div>
-            <h1 style={{fontSize: '5em', marginLeft: '600px'}}>대롱대롱 사용방법</h1>
-            <div className="sub_screen" style={{overflow: 'auto'}}>
+
+            <h1 className="centered-heading">대롱대롱 사용방법</h1>
+
+            <div className="sub_screen" style={{ overflow: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <div
                     className="usage-instructions"
                     ref={usageContainerRef}
                     onMouseDown={handleMouseDown}
                     onMouseMove={handleMouseMove}
                     onMouseUp={handleMouseUp}
-                    onMouseLeave={handleMouseLeave}>
+                    onMouseLeave={handleMouseLeave}
+                    style={{ textAlign: 'center' }}
+                >
                     <div className="usage-image">
-                        <img src="/use1.png" alt="사용방법 1"/>
+                        <img src="/use1.png" alt="사용방법 1" />
                     </div>
                     <div className="usage-image">
-                        <img src="/use2.png" alt="사용방법 2"/>
+                        <img src="/use2.png" alt="사용방법 2" />
                     </div>
                     <div className="usage-image">
-                        <img src="/use3.png" alt="사용방법 3"/>
+                        <img src="/use3.png" alt="사용방법 3" />
                     </div>
                     <div className="usage-image">
-                        <img src="/use4.png" alt="사용방법 4"/>
+                        <img src="/use4.png" alt="사용방법 4" />
                     </div>
                 </div>
             </div>
-            {/*<div>*/}
-            {/*    <p className="sub_text2">daelongdaelong.official</p>*/}
-            {/*</div>*/}
         </main>
     );
 };
