@@ -21,15 +21,15 @@ const Login = () => {
     };
 
     const goMyPage = () => {
-        navigate("/mypage");
+        navigate("/mypage/");
     }
 
     const goLoginPage = () => {
-        navigate("/login");
+        navigate("/login/");
     }
 
     const goSignUpPage = () => {
-        navigate("/signup");
+        navigate("/signup/");
     }
 
     return (
@@ -38,27 +38,31 @@ const Login = () => {
                 <div className="logo_wrapper">
                     <img src="/teamlogo.png" alt="로고" width="200px" height="90px" onClick={goRootPage}/>
                 </div>
-                <div className="myPageBtn" onClick={goMyPage}>마이페이지</div>
-                <div className="loginBtn" onClick={goLoginPage}>로그인</div>
-                <div className="signupBtn" onClick={goSignUpPage}>회원가입</div>
+                <div className="signImg">
+                    <img src="/human.png" alt="sign Image" width="50px" height="50px"/>
+                    <div className="hoverBox">
+                        <button className="button" onClick={goLoginPage}>로그인</button>
+                        <button className="button" onClick={goSignUpPage}>회원가입</button>
+                        <button className="button" onClick={goMyPage}>마이페이지</button>
+                    </div>
+                </div>
             </div>
             <div className="inner-container">
                 <div className="box">
-                    <h1>로그인 | LOGIN</h1>
                     <input
                         type="text"
                         value={id}
                         onChange={(e) => setId(e.target.value)}
-                        placeholder="아이디 | ID"
+                        placeholder="ID"
                     />
                     <input
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        placeholder="비밀번호 | Password"
+                        placeholder="PW"
                     />
                     <button onClick={handleLogin}>로그인</button>
-                    <p>회원이 아니신가요? <span className="signup" onClick={goSignUpPage}>회원가입 | Sign Up</span></p>
+                    <p><span className="signup" onClick={goSignUpPage}>회원가입</span></p>
                 </div>
             </div>
         </div>
