@@ -125,6 +125,35 @@
     height: 100vh; /* 화면 전체 높이를 채우도록 설정 */
     position: relative; /* 위치 고정을 해제 */
 }
+.usage-instructions {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 20px;
+    scroll-behavior: smooth;
+    cursor: grab;
+}
+
+.usage-instructions:active {
+    cursor: grabbing;
+}
+
+.usage-image {
+    display: inline-block;
+    margin-right: 100px;
+    flex: 0 0 auto;
+}
+
+.usage-image img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 100px;
+}
+
+
+
 
 /* 반응형 디자인 */
 @media (max-width: 1024px) {
