@@ -24,19 +24,19 @@ const MyPage = () => {
     };
 
     const goMyPage = () => {
-        navigate("/mypage/");
+        navigate("/mypage");
     }
 
     const goLoginPage = () => {
-        navigate("/login/");
+        navigate("/login");
     }
 
     const goSignUpPage = () => {
-        navigate("/signup/");
+        navigate("/signup");
     }
 
     const goEditInfoPage = () => {
-        navigate("/editinfo/");
+        navigate("/editinfo");
     }
 
 

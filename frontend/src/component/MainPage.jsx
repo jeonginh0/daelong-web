@@ -123,15 +123,15 @@ const MainPage = () => {
     };
 
     const goMyPage = () => {
-        navigate("/mypage/");
+        navigate("/mypage");
     };
 
     const goLoginPage = () => {
-        navigate("/login/");
+        navigate("/login");
     };
 
     const goSignUpPage = () => {
-        navigate("/signup/");
+        navigate("/signup");
     };
 
     const handleChange = (index, value) => {
@@ -151,9 +151,9 @@ const MainPage = () => {
                     {showDropdown && (
                         <div className="dropdown-menu show">
                             <ul>
-                                <li><a href="/login">로그인</a></li>
-                                <li><a href="/signup">회원가입</a></li>
-                                <li><a href="/mypage">마이페이지</a></li>
+                                <li><a onClick={goLoginPage}>로그인</a></li>
+                                <li><a onClick={goSignUpPage}>회원가입</a></li>
+                                <li><a onClick={goMyPage}>마이페이지</a></li>
                             </ul>
                         </div>
                     )}

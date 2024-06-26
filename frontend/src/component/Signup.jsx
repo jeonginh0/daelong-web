@@ -1,26 +1,18 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import fastapi from '../utils/fastapi';
 import '../style/button.css';
 import '../style/screen.css';
 import '../style/signup.css'; // 스타일 파일을 import
 
 const SignUpForm = () => {
-    const [id, setId] = useState('');
-    const [password, setPassword] = useState('');
-    const [name, setName] = useState('');
-    const [nickname, setNickname] = useState('');
-    const [email, setEmail] = useState('');
     const navigate = useNavigate();
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // 여기서 회원가입 로직을 구현합니다.
-
-        console.log("회원가입 정보:", id, password, name, nickname, email);
-        // 회원가입 후 다른 페이지로 이동하고 싶다면 navigate 함수를 이용합니다.
-        navigate('/'); // 이동할 페이지 경로를 지정합니다.
-    }
-
+    const history = useState(null);
+    const [username, setUsername] = useState('');
+    const [password1, setPassword1] = useState('');
+    const [password2, setPassword2] = useState('');
+    const [email, setEmail] = useState('');
 
     const goRootPage = () => {
         navigate("/"); // "/" 경로로 이동합니다
@@ -38,6 +30,29 @@ const SignUpForm = () => {
         navigate("/signup/");
     }
 
+    const postUser = (event) => {
+        event.preventDefault();
+        const url = "/api/user/create";
+        const params = {
+            username: username,
+            password1: password1,
+            password2: password2,
+            email: email
+        };
+        try {
+            const response =  axios.post(url, params);
+            console.log(response.data);
+            history.push('/login'); // 회원가입 후 로그인 페이지로 리다이렉트
+        } catch (error) {
+            console.error('There was an error!', error);
+        }
+        // fastapi('post', url, params,
+        //     (json) => {
+        //         history.push('/login');
+        //     },
+        // );
+    };
+
     return (
         <div className="vid-container">
             <div className="head_screen">
@@ -51,38 +66,38 @@ const SignUpForm = () => {
             <div className="inner-container">
                 <div className="box">
                     <h1>회원가입 | SIGN UP</h1>
-                    <input
-                        type="text"
-                        value={id}
-                        onChange={(e) => setId(e.target.value)}
-                        placeholder="아이디 | ID"
-                    />
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="비밀번호 | Password"
-                    />
-                    <input
-                        type="name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="이름 | Name"
-                    />
-                    <input
-                        type="nickname"
-                        value={nickname}
-                        onChange={(e) => setNickname(e.target.value)}
-                        placeholder="닉네임 | NickName"
-                    />
-                    <input
-                        type="e-mail"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="이메일 | Email"
-                    />
-                    <button onClick={handleSubmit}>가입하기</button>
-                    <p>이미 회원이신가요? <span className="signup" onClick={goLoginPage}>로그인 | Login</span></p>
+                    <form method="post" onSubmit={postUser}>
+                        <input
+                            type="text"
+                            id="username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            placeholder="이름 | Name"
+                        />
+                        <input
+                            type="password"
+                            id="password1"
+                            value={password1}
+                            onChange={(e) => setPassword1(e.target.value)}
+                            placeholder="비밀번호 입력 | Password"
+                        />
+                        <input
+                            type="password"
+                            id="password1"
+                            value={password2}
+                            onChange={(e) => setPassword2(e.target.value)}
+                            placeholder="비밀번호 확인 | Password"
+                        />
+                        <input
+                            type="text"
+                            id="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="이메일 | Email"
+                        />
+                        <button type="submit">가입하기</button>
+                        <p>이미 회원이신가요? <span className="signup" onClick={goLoginPage}>로그인 | Login</span></p>
+                    </form>
                 </div>
             </div>
         </div>
