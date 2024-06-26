@@ -144,15 +144,6 @@ const MainPage = () => {
                         </div>
                     </div>
                 </div>
-                {isUsageModalOpen && (
-                    <div className={`modal ${isUsageModalOpen ? 'show' : ''}`} ref={usageModalRef}>
-                        <div className="modal-background" onClick={() => setIsUsageModalOpen(false)}></div>
-                        <div className={`modal-content ${isUsageModalOpen ? 'show' : ''}`}>
-                            <span className="close" onClick={() => setIsUsageModalOpen(false)}>&times;</span>
-                            <p>여기에 사용 방법에 대한 내용을 작성합니다.</p>
-                        </div>
-                    </div>
-                )}
                 {isStartModalOpen && (
                     <div className={`modal ${isStartModalOpen ? 'show' : ''}`} ref={startModalRef}>
                         <div className="modal-background" onClick={() => setIsStartModalOpen(false)}></div>

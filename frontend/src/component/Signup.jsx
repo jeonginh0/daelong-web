@@ -1,29 +1,64 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Error from "../utils/error";
 import '../style/button.css';
 import '../style/screen.css';
-import '../style/signup.css'; // 스타일 파일을 import
+import '../style/signup.css';
+import axios from "axios"; // 스타일 파일을 import
 
 const SignUpForm = () => {
-    const [id, setId] = useState('');
-    const [password, setPassword] = useState('');
     const [name, setName] = useState('');
-    const [nickname, setNickname] = useState('');
+    const [username, setUsername] = useState('');
+    const [password1, setPassword1] = useState('');
+    const [password2, setPassword2] = useState('');
+    const [email, setEmail] = useState('');
+    const [history, setHistory] = useState('');
+    const [error, setError] = useState({ detail: [] });
     const [agreeTerms, setAgreeTerms] = useState(false); // 약관 동의 상태 추가
+
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // 여기서 회원가입 로직을 구현합니다.
-        if (!agreeTerms) {
-            alert('회원약관 및 개인정보 수집 및 이용에 동의해야 합니다.');
+    const postUser = async (event) => {
+        event.preventDefault();
+
+        // Basic validation
+        if (!name || !username || !password1 || !password2 || !email) {
+            setError({ detail: ['모든 필드를 입력하세요.'] });
             return;
         }
 
-        console.log("회원가입 정보:", id, password, name, nickname);
-        // 회원가입 후 다른 페이지로 이동하고 싶다면 navigate 함수를 이용합니다.
-        navigate('/'); // 이동할 페이지 경로를 지정합니다.
-    }
+        if (password1 !== password2) {
+            setError({ detail: ['비밀번호가 일치하지 않습니다.'] });
+            return;
+        }
+
+        // Example URL and API call
+        let url = "http://localhost:8000/api/user/create";
+        const params = {
+            name: name,
+            username: username,
+            password1: password1,
+            password2: password2,
+            email: email,
+            history: history
+        };
+
+        try {
+            const response = await axios.post(url, params, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.status === 204) {
+                navigate('/login/'); // Redirect upon successful signup
+            } else {
+                throw new Error('회원 가입 중 오류가 발생했습니다.');
+            }
+        } catch (error) {
+            setError({ detail: [error.message || '회원 가입 중 오류가 발생했습니다.'] });
+        }
+    };
 
 
     const goRootPage = () => {
@@ -65,32 +100,36 @@ const SignUpForm = () => {
             <div className="inner-container">
                 <div className="box2">
                     <h1 style={{textAlign: 'center', marginBottom: '30px'}}>회원가입 | Sign Up</h1>
-                    <h2 style={{textAlign: 'center', marginBottom: '30px', marginRight: "1000px"}}>기본정보</h2>
                     <input
                         type="text"
-                        value={id}
-                        onChange={(e) => setId(e.target.value)}
-                        placeholder="ID"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="이름"
+                    />
+                    <input
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder="아이디 입력"
                     />
                     <input
                         type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Password"
+                        value={password1}
+                        onChange={(e) => setPassword1(e.target.value)}
+                        placeholder="패스워드 입력"
                     />
                     <input
-                        type="name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Name"
+                        type="password"
+                        value={password2}
+                        onChange={(e) => setPassword2(e.target.value)}
+                        placeholder="패스워드 확인"
                     />
                     <input
-                        type="nickname"
-                        value={nickname}
-                        onChange={(e) => setNickname(e.target.value)}
-                        placeholder="NickName"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="이메일 입력"
                     />
-                    <h2 style={{textAlign: 'center', marginBottom: '20px', marginRight: '1000px'}}>약관동의</h2>
                     <div className="agree-container">
                         <input
                             type="checkbox"
@@ -102,7 +141,7 @@ const SignUpForm = () => {
                             대롱대롱 회원약관, 개인정보 수집 및 이용에 모두 동의합니다.
                         </label>
                     </div>
-                    <button onClick={handleSubmit}>가입하기</button>
+                    <button type="submit" onClick={postUser}>가입하기</button>
                     <p><span className="signup" onClick={goLoginPage}>로그인 | Login</span></p>
                 </div>
             </div>

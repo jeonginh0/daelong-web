@@ -1,18 +1,20 @@
-from datetime import datetime, timedelta
-
+import os
+from datetime import timedelta, datetime
 from fastapi import APIRouter, HTTPException
 from fastapi import Depends
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from jose import jwt, JWTError
+from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from starlette import status
 
+from jose import jwt, JWTError
 from database import get_db
-from user import user_crud, user_schema
-from user.user_crud import pwd_context
+from domain.user import user_crud, user_schema
+from domain.user.user_crud import pwd_context
+
+TOKEN_SECRET_KEY = os.getenv("TOKEN_SECRET_KEY")
 
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24
-SECRET_KEY = "4ab2fce7a6bd79e1c014396315ed322dd6edb1c5d975c6b74a2904135172c03c"
+SECRET_KEY = f"{TOKEN_SECRET_KEY}"
 ALGORITHM = "HS256"
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/user/login")
 
@@ -21,10 +23,12 @@ router = APIRouter(
 )
 
 
-@router.post("/create", status_code=201, response_model=user_schema.User)
+@router.post("/create", status_code=status.HTTP_204_NO_CONTENT)
 def user_create(_user_create: user_schema.UserCreate, db: Session = Depends(get_db)):
+    print("사용자 계정 생성을 성공하였습니다.")
     user = user_crud.get_existing_user(db, user_create=_user_create)
     if user:
+        print("이미 존재하는 사용자입니다.")
         raise HTTPException(status_code=status.HTTP_409_CONFLICT,
                             detail="이미 존재하는 사용자입니다.")
     user_crud.create_user(db=db, user_create=_user_create)
