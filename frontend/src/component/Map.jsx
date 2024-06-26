@@ -211,15 +211,15 @@ const Map = () => {
     };
 
     const goMyPage = () => {
-        navigate("/mypage/");
+        navigate("/mypage");
     }
 
     const goLoginPage = () => {
-        navigate("/login/");
+        navigate("/login");
     }
 
     const goSignUpPage = () => {
-        navigate("/signup/");
+        navigate("/signup");
     }
 
     return (
