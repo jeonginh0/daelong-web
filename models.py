@@ -10,3 +10,10 @@ class User(Base):
     password = Column(String, nullable=False)
     email = Column(String, unique=True, nullable=False)
     history = Column(String, nullable=True)
+
+class History(Base):
+    __tablename__ = "history"
+
+    id = Column(Integer, primary_key=True)
+    page_url = Column(String, nullable=True)
+    page_value = Column(String, nullable=True)

@@ -35,6 +35,15 @@
     max-height: 100px; /* head_screen 높이에 맞게 최대 높이 설정 */
 }
 
+.welcome-message {
+    position: absolute;
+    margin-top: 15px;
+    justify-content: right;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+}
+
 .main_screen {
     background-color: #ffffff;
     display: flex;

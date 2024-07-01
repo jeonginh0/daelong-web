@@ -3,17 +3,51 @@ import { useNavigate } from "react-router-dom";
 import '../style/button.css';
 import '../style/screen.css';
 import '../style/signin.css';
+import axios from "axios";
+import Error from "../utils/error";
 
-const Login = () => {
-    const [id, setId] = useState('');
+const Login = ({onLogin}) => {
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
     const navigate = useNavigate();
+    const [error, setError] = useState({ detail: [] });
+    let [islogin, setIslogin] = useState(false);
 
-    const handleLogin = () => {
-        // 로그인 로직을 여기에 추가하세요.
-        console.log('로그인 정보:', {id, password, rememberMe});
-        navigate('/');
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        let url = "http://localhost:8000/api/user/login";
+        const params = {
+            username: username,
+            password: password
+        };
+
+        try {
+            const response = await axios.post(url, params, {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            });
+
+            if (response.status === 200) {
+                localStorage.setItem('access_token', response.data.access_token);
+                localStorage.setItem('username', response.data.username);
+                setIslogin(true);
+                onLogin(username); // 부모 컴포넌트에 로그인 상태 전달
+                navigate('/'); // 로그인 성공 시 리다이렉트
+                window.location.reload();
+            } else {
+                throw new Error('로그인 중 오류가 발생했습니다.');
+            }
+
+            const result = await response.json();
+            localStorage.setItem('access_token', result.access_token);
+            localStorage.setItem('username', result.username);
+
+        } catch (error) {
+            setError({ detail: [error.message || '로그인 중 오류가 발생했습니다.'] });
+        }
     };
 
     const goRootPage = () => {
@@ -50,26 +84,13 @@ const Login = () => {
 
     return (
         <div className="vid-container">
-            <div className="head_screen">
-                <div className="logo_wrapper">
-                    <img src="/teamlogo.png" alt="로고" width="200px" height="90px" onClick={goRootPage}/>
-                </div>
-                <div className="signImg">
-                    <img src="/human.png" alt="sign Image" width="50px" height="50px"/>
-                    <div className="hoverBox">
-                        <button className="button" onClick={goLoginPage}>로그인</button>
-                        <button className="button" onClick={goSignUpPage}>회원가입</button>
-                        <button className="button" onClick={goMyPage}>마이페이지</button>
-                    </div>
-                </div>
-            </div>
             <div className="inner-container">
                 <div className="box">
-                    <h1 style={{ textAlign: 'center', marginBottom: '30px' }}>로그인 | Login</h1>
+                    <h1 style={{textAlign: 'center', marginBottom: '30px'}}>로그인 | Login</h1>
                     <input
                         type="text"
-                        value={id}
-                        onChange={(e) => setId(e.target.value)}
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                         placeholder="ID"
                     />
                     <input
@@ -82,7 +103,7 @@ const Login = () => {
                         <div className={`remember-checkbox ${rememberMe ? 'checked' : ''}`}></div>
                         <label>아이디 저장</label>
                     </div>
-                    <button onClick={handleLogin}>로그인</button>
+                    <button type="submit" onClick={handleSubmit}>로그인</button>
                     <div className="row">
                         <span className="signup" onClick={goSignUpPage}>
                             아이디 찾기

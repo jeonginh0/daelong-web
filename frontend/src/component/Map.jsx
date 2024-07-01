@@ -224,21 +224,6 @@ const Map = () => {
 
     return (
         <div className="map_wrap">
-            <div className="maphead_screen">
-                <img src="/teamlogo.png" alt="로고" width="200px" height="90px" onClick={goRootPage}
-                     style={{cursor: 'pointer'}}/>
-                <div className="signImg">
-                    <img src="/human.png" alt="sign Image" width="50px" height="50px"/>
-                    <div className="hoverBox">
-                        <button className="button" onClick={goLoginPage}>로그인</button>
-                        <button className="button" onClick={goSignUpPage}>회원가입</button>
-                        <button className="button" onClick={goMyPage}>마이페이지</button>
-                    </div>
-                </div>
-                {/*<div className="myPageBtn" onClick={goMyPage}>마이페이지</div>*/}
-                {/*<div className="loginBtn" onClick={goLoginPage}>로그인</div>*/}
-                {/*<div className="signupBtn" onClick={goSignUpPage}>회원가입</div>*/}
-            </div>
             <div id="map" className="map"></div>
             <ul id="category">
                 <li id="SW8" className={currCategory === 'SW8' ? 'on' : ''} data-order="4"

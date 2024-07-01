@@ -7,15 +7,18 @@ import Signup from "./component/Signup";
 import Map from './component/Map';
 import './style/map.css';
 import './style/button.css'
+import Navbar from "./component/Navigation";
 
 function App() {
     return (
         <Router>
             <div className="App">
+                <Navbar/>
                 <Routes>
                     <Route path="/" element={<MainPage />} />
                     <Route path="/mypage" element={<MyPage />} />
-                    <Route path="/login" element={<Login />} />
+                    {/*<Route path="/login" element={<Login />} />*/}
+                    <Route path="/login" element={<Login onLogin={(username) => console.log("Logged in as", username)} />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/map" element={<Map />} />
                 </Routes>

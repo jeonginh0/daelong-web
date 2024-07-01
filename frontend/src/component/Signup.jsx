@@ -84,19 +84,6 @@ const SignUpForm = () => {
 
     return (
         <div className="vid-container">
-            <div className="head_screen">
-                <div className="logo_wrapper">
-                    <img src="/teamlogo.png" alt="로고" width="200px" height="90px" onClick={goRootPage}/>
-                </div>
-                <div className="signImg">
-                    <img src="/human.png" alt="sign Image" width="50px" height="50px"/>
-                    <div className="hoverBox">
-                        <button className="button" onClick={goLoginPage}>로그인</button>
-                        <button className="button" onClick={goSignUpPage}>회원가입</button>
-                        <button className="button" onClick={goMyPage}>마이페이지</button>
-                    </div>
-                </div>
-            </div>
             <div className="inner-container">
                 <div className="box2">
                     <h1 style={{textAlign: 'center', marginBottom: '30px'}}>회원가입 | Sign Up</h1>

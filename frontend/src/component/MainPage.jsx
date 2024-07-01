@@ -78,18 +78,6 @@ const MainPage = () => {
         }).open();
     };
 
-    const goMyPage = () => {
-        navigate("/mypage/");
-    };
-
-    const goLoginPage = () => {
-        navigate("/login/");
-    };
-
-    const goSignUpPage = () => {
-        navigate("/signup/");
-    };
-
     const handleChange = (index, value) => {
         const newAddresses = [...addresses];
         newAddresses[index] = value;
@@ -119,20 +107,6 @@ const MainPage = () => {
 
     return (
         <main>
-            <div className="head_screen">
-                <div className="logo_wrapper">
-                    <img src="/teamlogo.png" alt="로고" width="200px" height="90px" />
-                </div>
-                <div className="signImg">
-                    <img src="/human.png" alt="sign Image" width="50px" height="50px" />
-                    <div className="hoverBox">
-                        <button className="button" onClick={goLoginPage}>로그인</button>
-                        <button className="button" onClick={goSignUpPage}>회원가입</button>
-                        <button className="button" onClick={goMyPage}>마이페이지</button>
-                    </div>
-                </div>
-            </div>
-
             <div className="main_screen">
                 <div className="text_screen">
                     <div className="overlay">
@@ -143,15 +117,6 @@ const MainPage = () => {
                         </div>
                     </div>
                 </div>
-                {isUsageModalOpen && (
-                    <div className={`modal ${isUsageModalOpen ? 'show' : ''}`} ref={usageModalRef}>
-                        <div className="modal-background" onClick={() => setIsUsageModalOpen(false)}></div>
-                        <div className={`modal-content ${isUsageModalOpen ? 'show' : ''}`}>
-                            <span className="close" onClick={() => setIsUsageModalOpen(false)}>&times;</span>
-                            <p>여기에 사용 방법에 대한 내용을 작성합니다.</p>
-                        </div>
-                    </div>
-                )}
                 {isStartModalOpen && (
                     <div className={`modal ${isStartModalOpen ? 'show' : ''}`} ref={startModalRef}>
                         <div className="modal-background" onClick={() => setIsStartModalOpen(false)}></div>
