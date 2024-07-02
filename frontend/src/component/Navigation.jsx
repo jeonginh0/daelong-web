@@ -32,11 +32,20 @@ const Navbar = () => {
         navigate("/signup/");
     };
 
+    const goMainPage = () => {
+        navigate("/");
+    };
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
             <div className="head_screen">
-                <div className="logo_wrapper">
-                    <img src="/teamlogo.png" alt="로고" width="200px" height="90px"/>
+                <div className="logo_wrapper" onClick={goMainPage} style={{ cursor: 'pointer' }}>
+                    <img
+                        src="/teamlogo.png"
+                        alt="로고"
+                        width="200px"
+                        height="90px"
+                    />
                 </div>
                 <div className="signImg">
                     <div className="welcome-message">
