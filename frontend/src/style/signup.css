@@ -80,6 +80,9 @@ input::placeholder {
 .box2 button:active{
     background:#000000;
 }
+.box2 button:hover{
+    background: #6202FF;
+}
 
 .box2 button:hover {
     background: #6202FF; /* 호버 시 배경색 */
