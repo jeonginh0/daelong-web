@@ -3,19 +3,42 @@ import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
     const navigate = useNavigate();
-    const [username, setUsername] = useState(localStorage.getItem('username') || '');
+    const [username, setUsername] = useState('');
 
     useEffect(() => {
         const storedUsername = localStorage.getItem('username');
         if (storedUsername) {
             setUsername(storedUsername);
         }
+
+        // Kakao SDK 초기화
+        const script = document.createElement('script');
+        script.src = 'https://developers.kakao.com/sdk/js/kakao.js';
+        script.async = true;
+        script.onload = () => {
+            if (!window.Kakao.isInitialized()) {
+                window.Kakao.init('de7b3ca4ec3d00acac60215fbce08dc5'); // 여기에 카카오 앱 키 입력
+            }
+        };
+        document.body.appendChild(script);
+
+        return () => {
+            document.body.removeChild(script);
+        };
     }, []);
 
     const handleLogout = () => {
+        // 카카오 로그아웃 처리
+        if (window.Kakao.Auth.getAccessToken()) {
+            window.Kakao.Auth.logout(() => {
+                console.log("카카오 로그아웃 완료");
+            });
+        }
+
         localStorage.removeItem('access_token');
         localStorage.removeItem('username');
         setUsername('');
+
         navigate("/");
         window.location.reload(); // 페이지 새로고침
     };
