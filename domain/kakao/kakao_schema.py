@@ -3,6 +3,7 @@ from pydantic import BaseModel
 class KakaoUserBase(BaseModel):
     kakao_id: str
     email: str
+    nickname: str
 
 class KakaoUserCreate(KakaoUserBase):
     pass

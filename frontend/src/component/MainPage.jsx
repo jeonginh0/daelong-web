@@ -108,7 +108,7 @@ const MainPage = () => {
     return (
         <main>
             <div className="main_screen">
-                <div className="text_screen">4
+                <div className="text_screen">
                     <div className="overlay">
                         <h1 className="main_text">대롱대롱</h1>
                         <p className="sub_text1">중간지점 찾기 및 일정관리 서비스</p>
