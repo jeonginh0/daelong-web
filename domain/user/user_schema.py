@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic import BaseModel, validator, EmailStr
 
 
@@ -7,7 +9,8 @@ class UserCreate(BaseModel):
     password1: str
     password2: str
     email: EmailStr
-    history: str
+    history: Optional[str] = ""
+    kakao_id: Optional[str] = None
 
     @validator('name', 'username', 'password1', 'password2', 'email')
     def not_empty(cls, v):
@@ -30,8 +33,28 @@ class Token(BaseModel):
 
 class User(BaseModel):
     id: int
+    name: str
     username: str
     email: str
+    history: Optional[str] = None
+    kakao_id: Optional[str] = None
+
+    class Config:
+        orm_mode = True
+
+
+class KakaoUserBase(BaseModel):
+    kakao_id: str
+    email: str
+    username: str
+    history: Optional[str] = None
+
+class KakaoUserCreate(KakaoUserBase):
+    pass
+
+
+class KakaoUser(KakaoUserBase):
+    id: int
 
     class Config:
         orm_mode = True

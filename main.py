@@ -6,7 +6,6 @@ from starlette.staticfiles import StaticFiles
 
 import models
 from database import get_db
-from domain.kakao import kakao_router
 from domain.user import user_router
 
 app = FastAPI()
@@ -27,4 +26,3 @@ app.add_middleware(
 
 
 app.include_router(user_router.router)
-app.include_router(kakao_router.router, prefix="/api/user")
