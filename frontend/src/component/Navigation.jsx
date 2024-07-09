@@ -7,6 +7,7 @@ const Navbar = () => {
     const [username, setUsername] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
+    const [isMouseOverLogo, setIsMouseOverLogo] = useState(false);
 
     useEffect(() => {
         const fetchUserInfo = async () => {
@@ -75,15 +76,31 @@ const Navbar = () => {
     const goMyPage = () => navigate("/mypage/");
     const goLoginPage = () => navigate("/login/");
     const goSignUpPage = () => navigate("/signup/");
+    const goMainPage = () => navigate("/");
+    const handleMouseEnter = () => {setIsMouseOverLogo(true);};
+    const handleMouseLeave = () => {setIsMouseOverLogo(false);};
+
 
     if (isLoading) return <div>로딩 중...</div>;
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
             <div className="head_screen">
-                <div className="logo_wrapper">
-                    <img src="/teamlogo.png" alt="로고" width="200" height="90"/>
-                </div>
+                <div
+                    className={`logo_wrapper ${isMouseOverLogo ? 'grab-cursor' : ''}`}
+                    style={{
+                        width: '200px',
+                        height: '90px',
+                        cursor: 'pointer',
+                        objectFit: 'cover',
+                        backgroundImage: `url('/teamlogo.png')`,
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat'
+                    }}
+                    onClick={goMainPage}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                />
                 <div className="signImg">
                     <div className="welcome-message">
                         {error ? (
