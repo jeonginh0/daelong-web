@@ -16,21 +16,24 @@ const MainPage = () => {
     const isDragging = useRef(false);
     const startX = useRef(0);
     const scrollLeft = useRef(0);
+    const MAX_ADDRESSES = 5;
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (usageModalRef.current && !usageModalRef.current.contains(event.target)) {
+            if (isUsageModalOpen && usageModalRef.current && !usageModalRef.current.contains(event.target)) {
                 setIsUsageModalOpen(false);
             }
-            if (startModalRef.current && !startModalRef.current.contains(event.target)) {
+            if (isStartModalOpen && startModalRef.current && !startModalRef.current.contains(event.target)) {
                 setIsStartModalOpen(false);
             }
         };
+
         document.addEventListener('mousedown', handleClickOutside);
+
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, []);
+    }, [isUsageModalOpen, isStartModalOpen]);
 
     const handleSubmit = () => {
         const promises = addresses.map(address => {
@@ -58,7 +61,11 @@ const MainPage = () => {
     };
 
     const handleAddAddress = () => {
-        setAddresses([...addresses, ""]);
+        if (addresses.length < MAX_ADDRESSES) {
+            setAddresses([...addresses, ""]);
+        } else {
+            alert('최대 5개의 주소만 추가할 수 있습니다.');
+        }
     };
 
     const handleRemoveAddress = (index) => {
@@ -118,9 +125,11 @@ const MainPage = () => {
                     </div>
                 </div>
                 {isStartModalOpen && (
-                    <div className={`modal ${isStartModalOpen ? 'show' : ''}`} ref={startModalRef}>
-                        <div className="modal-background" onClick={() => setIsStartModalOpen(false)}></div>
-                        <div className={`modal-content ${isStartModalOpen ? 'show' : ''}`}>
+                    <div className={`modal ${isStartModalOpen ? 'show' : ''}`}>
+                        <div className="modal-background"></div>
+                        <div className={`modal-content ${isStartModalOpen ? 'show' : ''}`} ref={startModalRef}>
+                            <img src="/addresssmile.png" alt="Add person" className="button-icon2"/>
+                            <h3>주소를 입력하고 중간지점을 찾아보세요</h3>
                             <span className="close" onClick={() => setIsStartModalOpen(false)}>&times;</span>
                             {addresses.map((address, index) => (
                                 <div className="address-input-container" key={index}>
@@ -138,7 +147,12 @@ const MainPage = () => {
                                     <br />
                                 </div>
                             ))}
-                            <button className="add-button" onClick={handleAddAddress}>
+                            <button
+                                className="add-button"
+                                onClick={handleAddAddress}
+                                disabled={addresses.length >= MAX_ADDRESSES}
+                            >
+                                <img src="/personadd.png" alt="Add person" className="button-icon"/>
                                 만날 사람 추가하기!
                             </button>
                             <button className="meet-button" onClick={handleSubmit}>
