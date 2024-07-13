@@ -13,7 +13,7 @@
     width: 180px;
     height: 55px;
     margin: 10px;
-    background: #2E004A;
+    background: #6202FF;
     color: #ffffff;
     font-size: 1em;
     font-weight: bold;
@@ -162,7 +162,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 0%;
+    width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
@@ -408,7 +408,8 @@
 }
 
 .hoverBox button:hover {
-  background-color: #6202FF; /* 호버 시 배경색 변경 */
+  background-color: #7a37ed; /* 호버 시 배경색 변경 */
+  color: #ffffff; /* 호버 시 글자 색 변경 */
 }
 
 

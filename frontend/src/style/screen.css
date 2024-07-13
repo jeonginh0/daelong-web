@@ -123,8 +123,25 @@
 }
 
 .logo_wrapper {
+    width: 200px;
+    height: 90px;
     cursor: pointer;
+    object-fit: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
+
+.sign-image {
+    width: 50px;
+    height: 50px;
+    /* 다른 스타일 속성 추가 가능 */
+}
+
+.sign-image:hover {
+    opacity: 0.8; /* 호버 시 투명도 조정 */
+}
+
+
 
 .sub_screen {
     background-color: #ffffff;
@@ -155,14 +172,16 @@
     display: inline-block;
     margin-right: 100px;
     flex: 0 0 auto;
+
     pointer-events: none;
 }
 
 .usage-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    padding: 100px;
+    max-width: 150%;
+    width: 500px;
+    height: 500px;
+    border: 2px solid #000;
+    border-radius: 50px;
     pointer-events: auto;
 }
 

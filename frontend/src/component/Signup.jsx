@@ -95,7 +95,7 @@ const SignUpForm = () => {
         <div className="vid-container">
             <div className="inner-container">
                 <div className="box2">
-                    <h1 style={{textAlign: 'center', marginBottom: '30px'}}>회원가입 | Sign Up</h1>
+                    <h1 style={{textAlign: 'center', marginBottom: '30px'}}>회원가입</h1>
                     <input
                         type="text"
                         value={name}
@@ -139,14 +139,7 @@ const SignUpForm = () => {
                     </div>
                     <button type="submit" onClick={postUser}>가입하기</button>
                     <div className="social-login">
-                        <button onClick={handleKakaoLogin} className="kakao-login-btn">
-                            카카오로 회원가입
-                        </button>
-                        <button onClick={handleNaverLogin} className="naver-login-btn">
-                            네이버로 회원가입
-                        </button>
                     </div>
-                    <p><span className="signup" onClick={goLoginPage}>로그인 | Login</span></p>
                 </div>
             </div>
         </div>

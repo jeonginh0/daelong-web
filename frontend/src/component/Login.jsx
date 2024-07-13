@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../style/button.css';
 import '../style/screen.css';
-import '../style/signin.css';
+import '../style/login.css';
 import KakaoLogin from 'react-kakao-login';
 
 const Login = ({ onLogin }) => {
@@ -146,7 +146,7 @@ const Login = ({ onLogin }) => {
                     >
                         {/* Root 페이지로 이동하는 버튼 */}
                     </div>
-                    <h1 style={{textAlign: 'center', marginBottom: '30px'}}>로그인 | Login</h1>
+                    <h1 style={{textAlign: 'center', marginBottom: '30px'}}>로그인</h1>
                     <input
                         type="text"
                         value={username}

@@ -1,23 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 html {
-    font-family: Arial;
+    font-family: 'Open Sans', Arial, sans-serif;
     font-size: 16px;
-    /*background: #5e42a6;*/
 }
 
 .sidebar {
     position: fixed;
     width: 100%;
     height: 100vh;
-    background: #312450;
+    background: #ffffff;
     font-size: 1em;
-
+    overflow-y: auto; /* 세로 스크롤을 가능하게 합니다 */
 }
 
 .nav {
     position: relative;
-    margin: 0 15%;
+    margin: 0 45%;
     text-align: center;
     top: 50%;
     transform: translateY(-50%);
@@ -26,75 +25,86 @@ html {
 
 .nav ul {
     list-style: none;
-
-    li {
-        position: relative;
-        margin: 3.2em 0;
-
-        a {
-            line-height: 5em;
-            text-transform: uppercase;
-            text-decoration: none;
-            letter-spacing: 0.4em;
-            color: rgba(255,255,255 , 0.35);
-            display: block;
-            transition: all ease-out 300ms;
-        }
-
-        &.active a {
-            color: white;
-        }
-
-        &:not(.active)::after {
-            opacity: 0.2;
-        }
-
-        &:not(.active):hover a {
-            color: rgba(255,255,255 , 0.75);
-        }
-
-        &::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 0.2em;
-            background: black;
-            left: 0;
-            bottom: 0;
-            background-image: linear-gradient(to right, #5e42a6, #b74e91)
-        }
-    }
+    padding: 0;
 }
 
-.twitter {
+.nav ul li {
     position: relative;
-    width: 75%;
-    float: right;
-    height: 100vh;
+    margin: 2.2em 0;
+}
 
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-    }
+.nav ul li a {
+    line-height: 5em;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.4em;
+    color: rgb(0, 0, 0);
+    display: block;
+    transition: all ease-out 300ms;
+}
 
-    a {
-        position: relative;
+.nav ul li.active a {
+    color: black;
+}
 
-        img {
-            width: 48px;
-            height: 48px;
-        }
-    }
+.nav ul li:not(.active)::after {
+    opacity: 0.2;
+}
 
-    p {
-        text-transform: uppercase;
-        font-size: 1em;
-        letter-spacing: 0.1em;
-        color: #FFF;
-        font-weight: bold;
-        margin-top: 20px;
-    }
+.nav ul li:not(.active):hover a {
+    color: #c9bafb;
+}
+
+.nav ul li::after {
+    content: '';
+    position: absolute;
+    width: 100vw; /* 브라우저 너비만큼 선의 길이를 설정 */
+    height: 0.2em;
+    background: black;
+    left: 50%; /* 가운데 정렬을 위해 왼쪽 여백을 50%로 설정 */
+    transform: translateX(-50%); /* 가운데 정렬을 위해 위치 조정 */
+    bottom: 0;
+    background-image: linear-gradient(to right, #5e42a6, #b74e91);
+}
+
+
+.submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #ffffff;
+    display: none; /* 초기에는 하위 메뉴를 숨김 */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1; /* 다른 요소들보다 위에 위치하도록 z-index 설정 */
+    overflow-y: auto; /* 하위 메뉴가 넘칠 때 스크롤이 나타나도록 설정 */
+}
+
+.parent-menu:hover .submenu {
+    display: block; /* 부모 메뉴에 마우스를 가져다 놓았을 때 하위 메뉴 표시 */
+}
+
+.submenu li {
+    margin: 0;
+}
+
+.submenu li a {
+    color: rgba(255,255,255, 0.75);
+    text-transform: none;
+    letter-spacing: normal;
+    line-height: 2.5em;
+    display: block;
+    padding-left: 1em;
+}
+
+/* 추가적으로 사용 내역 메뉴 아이템에 대한 스타일링 */
+.submenu-item {
+    position: relative;
+}
+
+.submenu-item .submenu {
+    top: 0;
+    left: 100%; /* 오른쪽으로 나타나도록 위치 조정 */
 }
