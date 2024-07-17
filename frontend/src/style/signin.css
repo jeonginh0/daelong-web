@@ -136,7 +136,7 @@ input::placeholder {
 .row {
     display: flex;
     justify-content: space-between;
-    width: 800px;
+    width: 350px;
     margin: 20px auto;
 }
 @media screen and (max-width: 986px) {

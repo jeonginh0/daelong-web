@@ -122,7 +122,6 @@ const Navbar = () => {
                             <>
                                 <button className="button" onClick={goLoginPage}>로그인</button>
                                 <button className="button" onClick={goSignUpPage}>회원가입</button>
-                                <button className="button" onClick={goMyPage}>마이페이지</button>
                             </>
                         )}
                     </div>
