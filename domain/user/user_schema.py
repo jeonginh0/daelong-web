@@ -43,11 +43,19 @@ class User(BaseModel):
         orm_mode = True
 
 
+# 카카오
 class KakaoUserBase(BaseModel):
     kakao_id: str
     email: str
     username: str
     history: Optional[str] = None
+
+
+class KakaoLoginResponse(BaseModel):
+    access_token: str
+    username: str
+    id: int
+
 
 class KakaoUserCreate(KakaoUserBase):
     pass
@@ -58,3 +66,7 @@ class KakaoUser(KakaoUserBase):
 
     class Config:
         orm_mode = True
+
+
+class SaveUrlRequest(BaseModel):
+    page_url: str

@@ -60,35 +60,9 @@ const SignUpForm = () => {
         }
     };
 
-    const handleKakaoLogin = () => {
-        const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`;
-        window.location.href = KAKAO_AUTH_URL;
-    };
-
-    const handleNaverLogin = () => {
-        const NAVER_AUTH_URL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}&state=STATE_STRING`;
-        window.location.href = NAVER_AUTH_URL;
-    };
-
-    const goRootPage = () => {
-        navigate("/"); // "/" 경로로 이동합니다
-    };
-
-    const goMyPage = () => {
-        navigate("/mypage/");
-    }
-
     const goLoginPage = () => {
         navigate("/login/");
     }
-
-    const goSignUpPage = () => {
-        navigate("/signup/");
-    }
-
-    const toggleAgreeTerms = () => {
-        setAgreeTerms(!agreeTerms);
-    };
 
 
     return (
@@ -126,26 +100,7 @@ const SignUpForm = () => {
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="이메일 입력"
                     />
-                    <div className="agree-container">
-                        <input
-                            type="checkbox"
-                            checked={agreeTerms}
-                            onChange={toggleAgreeTerms}
-                            id="agreeTerms"
-                        />
-                        <label htmlFor="agreeTerms">
-                            대롱대롱 회원약관, 개인정보 수집 및 이용에 모두 동의합니다.
-                        </label>
-                    </div>
                     <button type="submit" onClick={postUser}>가입하기</button>
-                    <div className="social-login">
-                        <button onClick={handleKakaoLogin} className="kakao-login-btn">
-                            카카오로 회원가입
-                        </button>
-                        <button onClick={handleNaverLogin} className="naver-login-btn">
-                            네이버로 회원가입
-                        </button>
-                    </div>
                     <p><span className="signup" onClick={goLoginPage}>로그인 | Login</span></p>
                 </div>
             </div>

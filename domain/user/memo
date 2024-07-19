@@ -1,0 +1,29 @@
+# #카카오 생성 라우터
+# @router.post("/kakao-login", response_model=user_schema.KakaoUser)
+# def kakao_login(request: KakaoLoginRequest, db: Session = Depends(get_db)):
+#     access_token = request.access_token
+#     print("\n", access_token, "\n")
+#     headers = {
+#         "Authorization": f"Bearer {access_token}"
+#     }
+#     kakao_response = requests.get("https://kapi.kakao.com/v2/user/me", headers=headers)
+#
+#     if kakao_response.status_code != 200:
+#         raise HTTPException(status_code=400, detail="Failed to fetch user information from Kakao")
+#
+#     kakao_user_info = kakao_response.json()
+#     kakao_id = str(kakao_user_info["id"])
+#     email = kakao_user_info["kakao_account"]["email"]
+#     kakao_nickname = kakao_user_info["properties"]["nickname"]
+#
+#     db_kakao_user = user_crud.get_kakao_user_by_kakao_id(db, kakao_id)
+#     if db_kakao_user:
+#         return db_kakao_user
+#
+#     kakao_user = user_schema.KakaoUserCreate(
+#         kakao_id=kakao_id,
+#         email=email,
+#         username=kakao_nickname
+#     )
+#     created_user = user_crud.create_kakao_user(db, kakao_user)
+#     return created_user

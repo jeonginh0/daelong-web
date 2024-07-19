@@ -1,11 +1,6 @@
 from fastapi import FastAPI, Depends
 from requests import Session
 from starlette.middleware.cors import CORSMiddleware
-from starlette.responses import FileResponse
-from starlette.staticfiles import StaticFiles
-
-import models
-from database import get_db
 from domain.user import user_router
 
 app = FastAPI()
@@ -21,7 +16,7 @@ app.add_middleware(
 # app.mount("/", StaticFiles(directory="./frontend/build", html=True), name="static")
 #
 # @app.get("/")
-# def index():
+# dezf index():
 #     return FileResponse("frontend/build/index.html")
 
 

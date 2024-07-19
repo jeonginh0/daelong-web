@@ -7,13 +7,16 @@ const Navbar = () => {
     const [username, setUsername] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
+    const [isMouseOverLogo, setIsMouseOverLogo] = useState(false);
+
+    const kakao_token= process.env.REACT_APP_KAKAO_TOKEN_KEY;
 
     useEffect(() => {
         const fetchUserInfo = async () => {
             setIsLoading(true);
             setError('');
             const accessToken = localStorage.getItem('access_token');
-            const storedUsername = localStorage.getItem('username');
+            const   storedUsername = localStorage.getItem('username');
 
             if (storedUsername) {
                 setUsername(storedUsername);
@@ -49,7 +52,7 @@ const Navbar = () => {
         script.async = true;
         script.onload = () => {
             if (!window.Kakao.isInitialized()) {
-                window.Kakao.init('e6d645793eae54555f8301a9f89d226d');
+                window.Kakao.init(kakao_token);
             }
         };
         document.body.appendChild(script);
@@ -75,15 +78,31 @@ const Navbar = () => {
     const goMyPage = () => navigate("/mypage/");
     const goLoginPage = () => navigate("/login/");
     const goSignUpPage = () => navigate("/signup/");
+    const goMainPage = () => navigate("/");
+    const goHistoryPage = () => navigate("/history/");
+    const handleMouseEnter = () => {setIsMouseOverLogo(true);};
+    const handleMouseLeave = () => {setIsMouseOverLogo(false);};
 
     if (isLoading) return <div>로딩 중...</div>;
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
             <div className="head_screen">
-                <div className="logo_wrapper">
-                    <img src="/teamlogo.png" alt="로고" width="200" height="90"/>
-                </div>
+                <div
+                    className={`logo_wrapper ${isMouseOverLogo ? 'grab-cursor' : ''}`}
+                    style={{
+                        width: '200px',
+                        height: '90px',
+                        cursor: 'pointer',
+                        objectFit: 'cover',
+                        backgroundImage: `url('/teamlogo.png')`,
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat'
+                    }}
+                    onClick={goMainPage}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                />
                 <div className="signImg">
                     <div className="welcome-message">
                         {error ? (
@@ -91,7 +110,7 @@ const Navbar = () => {
                         ) : username ? (
                             <span>안녕하세요, {username}님!</span>
                         ) : (
-                            <span>로그인이 필요합니다</span>
+                            <span></span>
                         )}
                     </div>
                     <img src="/human.png" alt="sign" width="50" height="50"/>
@@ -99,7 +118,7 @@ const Navbar = () => {
                         {username ? (
                             <>
                                 <button className="button" onClick={handleLogout}>로그아웃</button>
-                                <button className="button" onClick={goMyPage}>마이페이지</button>
+                                <button className="button" onClick={goHistoryPage}>사용 기록</button>
                             </>
                         ) : (
                             <>

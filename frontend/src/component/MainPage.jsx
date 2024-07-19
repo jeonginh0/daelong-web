@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../style/button.css';
 import '../style/screen.css';
+import axios from 'axios';
 
 const { kakao } = window;
 
@@ -16,21 +17,24 @@ const MainPage = () => {
     const isDragging = useRef(false);
     const startX = useRef(0);
     const scrollLeft = useRef(0);
+    const MAX_ADDRESSES = 5;
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (usageModalRef.current && !usageModalRef.current.contains(event.target)) {
+            if (isUsageModalOpen && usageModalRef.current && !usageModalRef.current.contains(event.target)) {
                 setIsUsageModalOpen(false);
             }
-            if (startModalRef.current && !startModalRef.current.contains(event.target)) {
+            if (isStartModalOpen && startModalRef.current && !startModalRef.current.contains(event.target)) {
                 setIsStartModalOpen(false);
             }
         };
+
         document.addEventListener('mousedown', handleClickOutside);
+
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, []);
+    }, [isUsageModalOpen, isStartModalOpen]);
 
     const handleSubmit = () => {
         const promises = addresses.map(address => {
@@ -50,15 +54,32 @@ const MainPage = () => {
         Promise.all(promises)
             .then(coordsArray => {
                 const url = `/map?coords=${JSON.stringify(coordsArray)}`;
-                navigate(url);
+                const token = localStorage.getItem('access_token'); // JWT 토큰 가져오기
+
+                axios.post('http://localhost:8000/api/user/save-url/',
+                    { page_url: url },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                )
+                    .then(response => {
+                        console.log('URL 저장 성공:', response.data);
+                        navigate(url); // URL로 네비게이션
+                    })
+                    .catch(error => {
+                        console.error('URL 저장 실패:', error.response?.data || error.message);
+                    });
             })
             .catch(error => {
                 console.error('Error converting address to coordinates:', error);
             });
     };
 
+
     const handleAddAddress = () => {
-        setAddresses([...addresses, ""]);
+        if (addresses.length < MAX_ADDRESSES) {
+            setAddresses([...addresses, ""]);
+        } else {
+            alert('최대 5개의 주소만 추가할 수 있습니다.');
+        }
     };
 
     const handleRemoveAddress = (index) => {
@@ -118,9 +139,11 @@ const MainPage = () => {
                     </div>
                 </div>
                 {isStartModalOpen && (
-                    <div className={`modal ${isStartModalOpen ? 'show' : ''}`} ref={startModalRef}>
-                        <div className="modal-background" onClick={() => setIsStartModalOpen(false)}></div>
-                        <div className={`modal-content ${isStartModalOpen ? 'show' : ''}`}>
+                    <div className={`modal ${isStartModalOpen ? 'show' : ''}`}>
+                        <div className="modal-background"></div>
+                        <div className={`modal-content ${isStartModalOpen ? 'show' : ''}`} ref={startModalRef}>
+                            <img src="/meet.png" alt="Add person" className="button-icon2"/>
+                            <h3>주소를 입력하고 중간지점을 찾아보세요</h3>
                             <span className="close" onClick={() => setIsStartModalOpen(false)}>&times;</span>
                             {addresses.map((address, index) => (
                                 <div className="address-input-container" key={index}>
@@ -138,7 +161,12 @@ const MainPage = () => {
                                     <br />
                                 </div>
                             ))}
-                            <button className="add-button" onClick={handleAddAddress}>
+                            <button
+                                className="add-button"
+                                onClick={handleAddAddress}
+                                disabled={addresses.length >= MAX_ADDRESSES}
+                            >
+                                <img src="/personadd.png" alt="Add person" className="button-icon"/>
                                 만날 사람 추가하기!
                             </button>
                             <button className="meet-button" onClick={handleSubmit}>

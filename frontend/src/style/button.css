@@ -7,6 +7,8 @@
 /*    overflow: hidden;*/
 /*}*/
 
+/* button.css */
+
 /* 시작하기 버튼 */
 .startServiceBtn {
     position: relative;
@@ -162,7 +164,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 0%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
@@ -177,49 +179,46 @@
 
 .modal-content {
     background-color: #ffffff;
-    padding: 300px;
+    padding: 40px;
     border-radius: 30px;
-    max-width: 100px;
     width: 80%;
+    max-width: 1000px;
     z-index: 1000;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.button-icon2 {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+.add-button,
+.meet-button {
+    width: 100%;
+    max-width: 920px;
+    height: 60px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: #afb6a3;
+    color: white;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .add-button {
-        background-color: #000000;
-        width: 420px;
-        height: 60px;
-        margin-top: 10px;
-        color: white;
-        position: absolute; /* 추가 */
-        bottom: 240px; /* 원하는 위치로 조정 */
-        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
-        transition: background 0.3s ease, box-shadow 0.3s ease;
-    }
+.add-button:hover,
+.meet-button:hover{
+    background-color: #2c0375;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+}
 
-    .add-button:hover {
-        background-color: #2c0375;
-        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
-    }
-
-    .meet-button {
-        width: 420px;
-        height: 60px;
-        margin-top: 10px;
-        background-color: #000000;
-        color: white;
-        position: absolute; /* 추가 */
-        bottom: 170px; /* 원하는 위치로 조정 */
-        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
-        transition: background 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .meet-button:hover {
-        background-color: #2c0375;
-        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
-    }
+.add-button .button-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    vertical-align: middle;
 }
 
 /*.modal*/
@@ -239,6 +238,7 @@
 }
 
 .input-field {
+    width: 820px;
     padding: 20px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -275,7 +275,18 @@
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
 }
 
+.login-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* 버튼 사이의 간격 조절 */
+    margin-top: 10px;
+}
 
+.login-button {
+    cursor: pointer;
+    max-width: 120px; /* 버튼 크기 조절 */
+    height: auto;
+}
 
 
 .close {
@@ -364,14 +375,9 @@
 }
 
 .signImg {
-    position: absolute; /* 상단 고정 */
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    width: 100%;
-    z-index: 2000;
-    top: 20px;
-    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    /* 다른 스타일 속성 추가 가능 */
 }
 
 .signImg img {
@@ -379,32 +385,32 @@
 }
 
 .hoverBox {
-  position: absolute;
-  top: 50px;
-  right: 20px;
-  background-color: white;
-  color: black;
-  padding: 10px;
-  border-radius: 5px;
-  z-index: 3000;
-  display: none;
-  flex-direction: column;
-  gap: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 추가 */
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 3000;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 추가 */
 }
 
 .hoverBox button {
-  width: 100%;
-  padding: 10px;
-  background-color: transparent;
-  color: black;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease; /* 배경색 변경 애니메이션 */
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    color: black;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* 배경색 변경 애니메이션 */
 }
 
 .hoverBox button:hover {
-  background-color: #6202FF; /* 호버 시 배경색 변경 */
+    background-color: #6202FF; /* 호버 시 배경색 변경 */
 }
 
 

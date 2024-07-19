@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+.vid-container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0 auto;
+    background-image: url('../../public/mapd.png'); /* 배경 이미지 설정 */
+}
+
+.inner-container1 {
+    width: 2000px;
+    height: 1200px;
+    position: absolute;
+    top: calc(50vh - 600px);
+    left: calc(50vw - 1000px);
+    overflow: hidden;
+    border-radius: 7px;
+}
+
+.box3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    font-family: 'Inter';
+    color: #000000;
+    background: rgba(0, 0, 0, 0%);
+    padding-top: 300px; /* 패딩을 줄여 히스토리 글자 위치 조정 */
+    border-radius: 7px;
+}
+
+/*.large-box {*/
+/*    width: 1400px; !* 원하는 너비로 설정 *!*/
+/*    height: 410px; !* 원하는 높이로 설정 *!*/
+/*    background-color: rgba(255, 255, 255, 0.8); !* 배경색과 투명도 설정 *!*/
+/*    margin-top: 20px; !* 히스토리 글자와의 간격 설정 *!*/
+/*    border: 2px solid #000; !* 테두리 설정 *!*/
+/*    border-radius: 10px; !* 모서리 둥글게 설정 *!*/
+/*    padding: 20px; !* 내부 여백 설정 *!*/
+/*    position: relative; !* 위치 설정 *!*/
+/*}*/
+
+/*.large-box::before {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    top: 50px; !* 상단에서 1px 아래로 이동 *!*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: calc(100% - 50px); !* 하단에서 1px 위로 이동하여 마지막 선을 제거 *!*/
+/*    background-image: linear-gradient(to bottom, #000 1px, transparent 1px);*/
+/*    background-size: 100% 50px; !* 17px 간격으로 배경 이미지 설정 *!*/
+/*    pointer-events: none; !* 클릭 이벤트 무시 *!*/
+/*}*/
+
+.history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* history 숫자, 시간, 내역 크기 */
+.history-item {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 2px solid #000;
+}
+
+.history-id, .history-datetime, .history-activity {
+    flex: 1;
+    text-align: center;
+}
+/* 번호 */
+.history-id {
+    font-size: 20px;
+    flex: 0;
+}
+/* 날짜 */
+.history-datetime {
+    font-size: 20px;
+    flex: 20;
+}
+/* 사용 내역 */
+.history-activity {
+    flex: 0.5;
+}
