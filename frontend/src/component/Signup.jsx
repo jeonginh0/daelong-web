@@ -75,8 +75,8 @@ const SignUpForm = () => {
         navigate("/"); // "/" 경로로 이동합니다
     };
 
-    const goMyPage = () => {
-        navigate("/mypage");
+    const goHistoryPage = () => {
+        navigate("/history/");
     }
 
     const goLoginPage = () => {
@@ -103,7 +103,7 @@ const SignUpForm = () => {
                     <div className="hoverBox">
                         <button className="button" onClick={goLoginPage}>로그인</button>
                         <button className="button" onClick={goSignUpPage}>회원가입</button>
-                        <button className="button" onClick={goMyPage}>마이페이지</button>
+                        <button className="button" onClick={goHistoryPage}>사용 내역</button>
                     </div>
                 </div>
             </div>

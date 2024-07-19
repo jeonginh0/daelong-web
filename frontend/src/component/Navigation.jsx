@@ -9,7 +9,7 @@ const Navbar = () => {
     const [error, setError] = useState('');
     const [isMouseOverLogo, setIsMouseOverLogo] = useState(false);
 
-    // navigation.jsx
+    //  navigation.jsx
 
     useEffect(() => {
         const fetchUserInfo = async () => {

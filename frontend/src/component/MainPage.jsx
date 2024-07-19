@@ -5,7 +5,7 @@ import '../style/screen.css';
 
 const { kakao } = window;
 
-//  mainpage.jsx
+// mainpage.jsx
 
 const MainPage = () => {
     const [isUsageModalOpen, setIsUsageModalOpen] = useState(false);
@@ -130,7 +130,7 @@ const MainPage = () => {
                     <div className={`modal ${isStartModalOpen ? 'show' : ''}`}>
                         <div className="modal-background"></div>
                         <div className={`modal-content ${isStartModalOpen ? 'show' : ''}`} ref={startModalRef}>
-                            <img src="/addresssmile.png" alt="Add person" className="button-icon2"/>
+                            <img src="/meet.png" alt="Add person" className="button-icon2"/>
                             <h3>주소를 입력하고 중간지점을 찾아보세요</h3>
                             <span className="close" onClick={() => setIsStartModalOpen(false)}>&times;</span>
                             {addresses.map((address, index) => (

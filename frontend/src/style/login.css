@@ -55,10 +55,10 @@
     width:800px;
     margin:20px auto;
     padding:25px;
-    background:rgba(0,0,0,0.2);
+    background: rgb(255, 255, 255);
     color:#FFFFFF;
     border-radius: 15px;
-    border:0;
+    border: 1px solid #000;
 }
 input::placeholder {
     color: rgb(0, 0, 0);

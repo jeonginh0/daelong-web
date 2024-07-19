@@ -6,7 +6,7 @@
     height: 100%;
     overflow: auto;
 }*/
-/* screen.css */
+/*  screen.css  */
 
 .head_screen {
     position: fixed; /* 상단 고정 */
@@ -154,18 +154,21 @@
 
 .usage-image {
     display: inline-block;
-    margin-right: 100px;
+    margin-right: 150px;
     flex: 0 0 auto;
     pointer-events: none;
+    border: 1px solid #000; /* 바깥쪽 1px짜리 선 추가 */
+    border-radius: 32px; /* 둥근 모서리 설정 */
+    display: flex; /* 자식 요소에 맞게 크기 조정 */
+    box-sizing: border-box; /* padding과 border를 포함한 크기 계산 */
 }
 
 .usage-image img {
     max-width: 100%;
     height: auto;
-    border-radius: 10px;
-    padding: 100px;
     pointer-events: auto;
 }
+
 
 .centered-heading {
     font-size: 5em;

@@ -6,7 +6,7 @@
 
 /*}*/
 
-/* signup.css */
+/*  signup.css  */
 
 .vid-container{
     display: flex;
@@ -52,10 +52,10 @@
     width:820px;
     margin:20px auto;
     padding:15px;
-    background:rgba(0,0,0,0.3);
+    background: rgb(255, 255, 255);
     color:#fff;
     border-radius: 12px;
-    border:0;
+    border: 1px solid #000;
 }
 
 input::placeholder {
@@ -87,8 +87,7 @@ input::placeholder {
     outline:none;
 }
 .box2 button{
-    background: #2c0375;
-    border:0;
+    background: #6202FF;
     color:#fff;
     padding:10px;
     font-size:20px;
@@ -97,16 +96,14 @@ input::placeholder {
     display:block;
     cursor:pointer;
     border-radius: 12px;
+    border: 1px solid #000;
 }
 .box2 button:active{
     background:#000000;
 }
-.box2 button:hover{
-    background: #6202FF;
-}
 
 .box2 button:hover {
-    background: #6202FF; /* 호버 시 배경색 */
+    background: #2c0375; /* 호버 시 배경색 */
 }
 
 .box2 p{
@@ -119,13 +116,14 @@ input::placeholder {
 }
 
 .box2 .agree-container {
-    background:rgba(0,0,0,0.3);
+    background: rgb(255, 255, 255);
     display: flex;
     align-items: center;
     justify-content: center;
     width: 850px;
     margin: 40px auto;
     border-radius: 15px;
+    border: 1px solid #000;
 }
 
 .box2 .agree-container input[type="checkbox"] {

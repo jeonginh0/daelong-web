@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+// EditInfo.jsx
 const EditInfo = ({ userInfo, setUserInfo, closeModal }) => {
     const [username, setUsername] = useState(userInfo?.username || '');
     const [email, setEmail] = useState(userInfo?.email || '');
