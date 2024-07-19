@@ -9,6 +9,7 @@ import './style/map.css';
 import './style/button.css'
 import Navbar from "./component/Navigation";
 
+// app.js
 function App() {
     return (
         <Router>
@@ -16,7 +17,7 @@ function App() {
                 <Navbar/>
                 <Routes>
                     <Route path="/" element={<MainPage />} />
-                    <Route path="/mypage" element={<History />} />
+                    <Route path="/history" element={<History />} />
                     {/*<Route path="/login" element={<Login />} />*/}
                     <Route path="/login" element={<Login onLogin={(username) => console.log("Logged in as", username)} />} />
                     <Route path="/signup" element={<Signup />} />

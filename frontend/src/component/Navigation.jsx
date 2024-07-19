@@ -9,6 +9,8 @@ const Navbar = () => {
     const [error, setError] = useState('');
     const [isMouseOverLogo, setIsMouseOverLogo] = useState(false);
 
+    // navigation.jsx
+
     useEffect(() => {
         const fetchUserInfo = async () => {
             setIsLoading(true);
@@ -77,6 +79,7 @@ const Navbar = () => {
     const goLoginPage = () => navigate("/login/");
     const goSignUpPage = () => navigate("/signup/");
     const goMainPage = () => navigate("/");
+    const goHistoryPage = () => navigate("/history/");
     const handleMouseEnter = () => {setIsMouseOverLogo(true);};
     const handleMouseLeave = () => {setIsMouseOverLogo(false);};
 
@@ -122,6 +125,7 @@ const Navbar = () => {
                             <>
                                 <button className="button" onClick={goLoginPage}>로그인</button>
                                 <button className="button" onClick={goSignUpPage}>회원가입</button>
+                                <button className="button" onClick={goHistoryPage}>사용 기록</button>
                             </>
                         )}
                     </div>

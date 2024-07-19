@@ -1,97 +1,154 @@
-/* 기본 스타일 */
-/*body, html {*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    overflow: hidden;*/
-/*    !*background: #5e42a6;*!*/
+@import url(https://fonts.googleapis.com/css?family=Inter:300);
+/*body{*/
+/*    padding:0;*/
+/*    margin:0;*/
+/*    font-family: 'Inter';*/
+/*    background: #5e42a6;*/
 /*}*/
 
-.login-container {
+/* login.css */
+.vid-container{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0 auto;
+    background-image: url('../../public/mapd.png'); /* 배경 이미지 설정 */
+}
+.bgvid.back {
+    position: fixed; right: 0; bottom: 0;
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto; z-index: -100;
+}
+.inner {
+    position: absolute;
 }
 
-.login-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 50px; /* 기본 패딩을 줄임 */
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 40px 40px rgba(0, 0, 0, 0.5);
-    max-width: 400px; /* 폼의 최대 너비 설정 */
-    width: 100%; /* 최대 너비에서 넘치지 않도록 */
+.inner-container {
+    width: 2000px;
+    height: 1200px;
+    position: absolute;
+    top: calc(50vh - 600px);
+    left: calc(50vw - 1000px);
+    overflow: hidden;
+    border-radius: 7px;
 }
 
-/* 폼 내부 요소 스타일링 */
-.login-form input[type="text"],
-.login-form input[type="password"] {
-    padding: 20px;
-    border: 2px solid #ccc;
-    border-radius: 10px;
+.box {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    font-family: 'Inter';
+    color: #000000;
+    background: rgba(0, 0, 0, 0%);
+    padding: 360px 0px;
+    border-radius: 7px;
 }
 
-.login-form button {
-    padding: 20px 30px;
-    background-color: #4403a8;
+.box h1{
+    text-align:center;
+    margin:30px 0;
+    font-size:30px;
+}
+.box input{
+    display:block;
+    width:800px;
+    margin:20px auto;
+    padding:25px;
+    background:rgba(0,0,0,0.2);
+    color:#FFFFFF;
+    border-radius: 15px;
+    border:0;
+}
+input::placeholder {
+    color: rgb(0, 0, 0);
+}
+.signup{
+    color: rgb(0, 0, 0)!important;
+}
+.box input:focus,.box input:active,.box button:focus,.box button:active{
+    outline:none;
+}
+.box button {
+    background: #6202FF;
+    border: 0;
     color: #fff;
-    border: none;
-    border-radius: 4px;
+    padding: 15px;
+    font-size: 20px;
+    width: 850px;
+    margin: 20px auto;
+    display: block;
     cursor: pointer;
-    transition: background-color 0.3s;
+    border-radius: 15px;
+    transition: background 0.3s; /* 부드러운 전환 효과 추가 */
 }
 
-.login-form button:hover {
-    background-color: #6202FF;
+.box button:hover {
+    background: #2c0375; /* 호버 시 배경색 */
 }
 
-.text-size {
-    font-size: 30px;
+.box button:active {
+    background: #000000;
 }
 
-/* 반응형 디자인 */
-@media (max-width: 768px) {
-    .login-form {
-        padding: 30px; /* 작은 화면에서 패딩 줄임 */
-        gap: 15px; /* 요소 사이의 간격 줄임 */
-    }
+.box p {
+    font-size: 14px;
+    text-align: center;
+}
 
-    .login-form input[type="text"],
-    .login-form input[type="password"] {
-        padding: 15px;
-    }
+.box p span {
+    cursor: pointer;
+    color: #636365;
+}
 
-    .login-form button {
-        padding: 15px 20px;
-    }
+.remember-container {
+    border: 0;
+    color: #FFFFFF;
+    padding: 10px;
+    font-size: 18px;
+    margin: 5px auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 850px;
+    position: relative; /* 상대적 위치 지정 */
+}
 
-    .text-size {
-        font-size: 25px; /* 작은 화면에서 텍스트 크기 줄임 */
+.remember-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000000;
+    margin-right: 10px; /* Space between checkbox and label */
+    border-radius: 4px;
+    position: relative; /* 상대적 위치 지정 */
+
+}
+
+.remember-checkbox.checked {
+    background-color: #A95AF7; /* 체크 시 배경색 변경 */
+}
+
+.remember-container label {
+    color: rgb(0, 0, 0); /* Text color */
+    cursor: pointer; /* Pointer cursor for label */
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    width: 800px;
+    margin: 20px auto;
+}
+@media screen and (max-width: 986px) {
+    .bgvid{
+        height: 100px!important;
     }
 }
 
-@media (max-width: 480px) {
-    .login-form {
-        padding: 20px; /* 더 작은 화면에서 패딩 줄임 */
-        gap: 10px; /* 요소 사이의 간격 더 줄임 */
-    }
-
-    .login-form input[type="text"],
-    .login-form input[type="password"] {
-        padding: 10px;
-    }
-
-    .login-form button {
-        padding: 10px 15px;
-    }
-
-    .text-size {
-        font-size: 20px; /* 가장 작은 화면에서 텍스트 크기 줄임 */
+@media screen and (min-width: 986px) {
+    .bgvid.back {
+        width: 100%;
     }
 }
-/**/

@@ -5,6 +5,8 @@ import '../style/screen.css';
 
 const { kakao } = window;
 
+//  mainpage.jsx
+
 const MainPage = () => {
     const [isUsageModalOpen, setIsUsageModalOpen] = useState(false);
     const [isStartModalOpen, setIsStartModalOpen] = useState(false);

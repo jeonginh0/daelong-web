@@ -1,97 +1,57 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
-html {
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-size: 16px;
-}
-
-.sidebar {
-    position: fixed;
-    width: 100%;
+/* history.css */
+.vid-container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
-    background: #ffffff;
-    font-size: 1em;
-    overflow-y: auto; /* 세로 스크롤을 가능하게 합니다 */
+    margin: 0 auto;
+    background-image: url('../../public/mapd.png'); /* 배경 이미지 설정 */
 }
 
-.nav {
-    position: relative;
-    margin: 0 45%;
-    text-align: center;
-    top: 50%;
-    transform: translateY(-50%);
-    font-weight: bold;
+.inner-container1 {
+    width: 2000px;
+    height: 1200px;
+    position: absolute;
+    top: calc(50vh - 600px);
+    left: calc(50vw - 1000px);
+    overflow: hidden;
+    border-radius: 7px;
 }
 
-.nav ul {
-    list-style: none;
-    padding: 0;
+.box3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    font-family: 'Inter';
+    color: #000000;
+    background: rgba(0, 0, 0, 0%);
+    padding-top: 300px; /* 패딩을 줄여 히스토리 글자 위치 조정 */
+    border-radius: 7px;
 }
 
-.nav ul li {
-    position: relative;
-    margin: 2.2em 0;
+.large-box {
+    width: 1400px; /* 원하는 너비로 설정 */
+    height: 410px; /* 원하는 높이로 설정 */
+    background-color: rgba(255, 255, 255, 0.8); /* 배경색과 투명도 설정 */
+    margin-top: 20px; /* 히스토리 글자와의 간격 설정 */
+    border: 2px solid #000; /* 테두리 설정 */
+    border-radius: 10px; /* 모서리 둥글게 설정 */
+    padding: 20px; /* 내부 여백 설정 */
+    position: relative; /* 위치 설정 */
 }
 
-.nav ul li a {
-    line-height: 5em;
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 0.4em;
-    color: rgb(0, 0, 0);
-    display: block;
-    transition: all ease-out 300ms;
-}
-
-.nav ul li.active a {
-    color: black;
-}
-
-.nav ul li:not(.active)::after {
-    opacity: 0.2;
-}
-
-
-.nav ul li::after {
+.large-box::before {
     content: '';
     position: absolute;
-    width: 100vw; /* 브라우저 너비만큼 선의 길이를 설정 */
-    height: 0.2em;
-    background: black;
-    left: 50%; /* 가운데 정렬을 위해 왼쪽 여백을 50%로 설정 */
-    transform: translateX(-50%); /* 가운데 정렬을 위해 위치 조정 */
-    bottom: 0;
-    background-image: linear-gradient(to right, #5e42a6, #b74e91);
-}
-
-
-.submenu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background: #ffffff;
-    display: none; /* 초기에는 하위 메뉴를 숨김 */
-    position: absolute;
-    top: 100%;
+    top: 50px; /* 상단에서 1px 아래로 이동 */
     left: 0;
     width: 100%;
-    z-index: 1; /* 다른 요소들보다 위에 위치하도록 z-index 설정 */
-    overflow-y: auto; /* 하위 메뉴가 넘칠 때 스크롤이 나타나도록 설정 */
-}
-
-.parent-menu:hover .submenu {
-    display: block; /* 부모 메뉴에 마우스를 가져다 놓았을 때 하위 메뉴 표시 */
-}
-
-.submenu li {
-    margin: 0;
-}
-
-.submenu li a {
-    color: rgb(0, 0, 0);
-    text-transform: none;
-    letter-spacing: normal;
-    line-height: 2.5em;
-    display: block;
-    padding-left: 1em;
+    height: calc(100% - 50px); /* 하단에서 1px 위로 이동하여 마지막 선을 제거 */
+    background-image: linear-gradient(to bottom, #000 1px, transparent 1px);
+    background-size: 100% 50px; /* 17px 간격으로 배경 이미지 설정 */
+    pointer-events: none; /* 클릭 이벤트 무시 */
 }

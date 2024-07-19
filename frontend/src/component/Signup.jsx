@@ -6,6 +6,7 @@ import '../style/screen.css';
 import '../style/signup.css';
 import axios from "axios"; // 스타일 파일을 import
 
+// signup.jsx
 const SignUpForm = () => {
     const [name, setName] = useState('');
     const [username, setUsername] = useState('');
