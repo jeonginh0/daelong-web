@@ -41,7 +41,7 @@ const History = () => {
                 setHistories([]);  // 에러 발생 시 빈 배열로 설정
             }
         };
-
+        //s
         const updateDateTime = () => {
             const now = new Date();
             const formattedDateTime = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
