@@ -1,0 +1,156 @@
+@import url(https://fonts.googleapis.com/css?family=Inter:300);
+/*body{*/
+/*    padding:0;*/
+/*    margin:0;*/
+/*    font-family: 'Inter';*/
+
+/*}*/
+
+/*  signup.css  */
+
+.vid-container2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0 auto;
+}
+.bgvid.back2 {
+    position: fixed; right: 0; bottom: 0;
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto; z-index: -100;
+}
+.inner {
+    position: absolute;
+}
+.inner-container2{
+    width:2000px;
+    height:1200px;
+    position: absolute;
+    top:calc(50vh - 600px);
+    left:calc(50vw - 1000px);
+    overflow:hidden;
+    border-radius: 7px;
+}
+.box2{
+    position:absolute;
+    height:100%;
+    width:100%;
+    font-family:'Inter';
+    color:#000000;
+    background:rgba(0, 0, 0, 0%); /* background:rgba(0, 0, 0, 28%); */
+    padding:350px 0px;
+    border-radius: 7px;
+}
+.box2 h1{
+    text-align:center;
+    margin:20px 0;
+    font-size:30px;
+}
+.box2 input{ /*id, pw box*/
+    display:block;
+    width:820px;
+    margin:20px auto;
+    padding:15px;
+    background: rgb(255, 255, 255);
+    color: #070707;
+    border-radius: 12px;
+    border: 1px solid #000;
+}
+
+input2::placeholder {
+    color: rgb(0,0,0);
+}
+
+.signup{
+    color: rgb(0, 0, 0) !important;
+}
+
+.signform {
+    font-size: xxx-large;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.normal-information {
+    font-size: xx-large;
+    text-align: center;
+    margin-right: 1000px;
+}
+
+.agree-agree {
+    font-size: xx-large;
+    text-align: center;
+    margin-right: 1000px;
+}
+.box2 input:focus,.box2 input:active,.box2 button:focus,.box2 button:active{
+    outline:none;
+}
+.box2 button{
+    background: #6202FF;
+    color:#fff;
+    padding:10px;
+    font-size:20px;
+    width:850px;
+    margin:30px auto;
+    display:block;
+    cursor:pointer;
+    border-radius: 12px;
+    border: 1px solid #000;
+}
+.box2 button:active{
+    background:#000000;
+}
+
+.box2 button:hover {
+    background: #2c0375; /* 호버 시 배경색 */
+}
+
+.box2 p{
+    font-size:14px;
+    text-align:center;
+}
+.box2 p span{
+    cursor:pointer;
+    color: #636365;
+}
+
+.box2 .agree-container {
+    background: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 850px;
+    margin: 40px auto;
+    border-radius: 15px;
+    border: 1px solid #000;
+}
+
+.box2 .agree-container input[type="checkbox"] {
+    display: block;
+    width: auto;
+    margin-left: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border-radius: 15px;
+    border: 0;
+}
+
+.box2 .agree-container label {
+    color: #000000;
+    font-size: 16px;
+    flex: 1;
+    text-align: center; /* 텍스트를 가운데 정렬 */
+}
+
+@media screen and (max-width: 986px) {
+    .bgvid{
+        height: 100px!important;
+    }
+}
+
+@media screen and (min-width: 986px) {
+    .bgvid.back {
+        width: 100%;
+    }
+}

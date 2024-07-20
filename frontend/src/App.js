@@ -1,27 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
-import React, {useEffect} from "react";
-
-
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import MainPage from "./component/MainPage";
+import History from "./component/History";
+import Login from "./component/Login";
+import Signup from "./component/Signup";
+import Map from './component/Map';
+import './style/map.css';
+import './style/button.css';
+import Navbar from "./component/Navigation";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+// app.js
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+            <Router>
+                <div className="App">
+                    <Navbar/>
+                        <Routes>
+                            <Route path="/" element={<MainPage/>}/>
+                            <Route path="/history" element={<History />} />
+                            <Route path="/login"
+                                   element={<Login onLogin={(username) => console.log("Logged in as", username)}/>}/>
+                            <Route path="/signup" element={<Signup/>}/>
+                            <Route path="/map" element={<Map/>}/>
+                        </Routes>
+                </div>
+            </Router>
+        </GoogleOAuthProvider>
+    );
 }
 
 export default App;

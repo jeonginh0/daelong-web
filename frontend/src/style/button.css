@@ -1,0 +1,433 @@
+/* 기본 스타일 */
+/*body, html {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    overflow: hidden;*/
+/*}*/
+
+/* button.css */
+
+/* 시작하기 버튼 */
+.startServiceBtn {
+    position: relative;
+    width: 180px;
+    height: 55px;
+    margin: 10px;
+    background: #6202FF;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.startServiceBtn:hover {
+    background: #2E004A;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* 사용방법 버튼 */
+.expServiceBtn {
+    position: relative;
+    width: 180px;
+    height: 55px;
+    margin: 10px;
+    background: rgba(74, 74, 74);
+    color: #FFFFFF;
+    font-size: 1em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.expServiceBtn:hover {
+    background: #6202FF;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* 마이페이지 버튼 */
+/*.myPageBtn {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    left: 70%;
+    top: 30px;
+    background: rgba(74, 74, 74, 0.5);
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid #000000;
+    border-radius: 50px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.myPageBtn:hover {
+    background: #6202FF;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* 로그인 버튼 */
+/*
+.loginBtn {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    left: 76%;
+    top: 30px;
+    background: #000000;
+    color: #FFFFFF;
+    font-size: 1em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid #000000;
+    border-radius: 50px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.loginBtn:hover {
+    background: #6202FF;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* 회원가입 버튼 */
+/*
+.signupBtn {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    left: 82%;
+    top: 30px;
+    background: #000000;
+    color: #FFFFFF;
+    font-size: 1em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid #000000;
+    border-radius: 50px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signupBtn:hover {
+    background: #6202FF;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+}
+
+/* 모달 스타일 */
+
+
+
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 30px;
+    width: 80%;
+    max-width: 1000px;
+    z-index: 1000;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.button-icon2 {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+.add-button,
+.meet-button {
+    width: 100%;
+    height: 60px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: #afb6a3;
+    color: white;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-button:hover,
+.meet-button:hover {
+    background-color: #2c0375;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+}
+
+.add-button .button-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/*.modal*/
+
+.input-field-container {
+    position: fixed;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column; /* 자식 요소들을 세로로 배치 */
+    width: 100%; /* 부모 요소의 너비를 100%로 설정 */
+    max-width: 920px; /* 최대 너비 설정 */
+    box-sizing: border-box;
+    padding: 0 10px;
+
+}
+
+.address-input-container {
+    display: flex; /* 자식 요소들을 가로로 배치 */
+    align-items: center; /* 세로 중앙 정렬 */
+    width: 100%; /* 부모 요소의 너비를 100%로 설정 */
+    margin-bottom: 10px;
+}
+
+.input-field {
+   flex-grow: 1; /* 남은 공간을 차지 */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+}
+
+.input-field::placeholder {
+    color: #999; /* 플레이스홀더 텍스트 색상 변경 */
+}
+
+.delete-button {
+    width: 60px;
+    height: 60px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: #000000;
+    font-size: 30px;
+    outline: none;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.delete-button:hover {
+    background: #6202FF;
+    color: white;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.6);
+}
+
+.login-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* 버튼 사이의 간격 조절 */
+    margin-top: 10px;
+}
+
+.login-button {
+    cursor: pointer;
+    max-width: 120px; /* 버튼 크기 조절 */
+    height: auto;
+}
+
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #000000;
+}
+
+/* 팝업 스타일 */
+.popup {
+    position: absolute;
+    width: 80%;
+    max-width: 500px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #000;
+}
+
+.popup-content {
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+    position: relative;
+    color: #FFFFFF;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #000000;
+}
+
+/* 카테고리 선택 버튼 스타일 */
+.category_selectorBtn {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.category_selectorBtn button {
+    padding: 8px 12px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+}
+
+.category_selectorBtn button:hover {
+    background-color: #f0f0f0;
+}
+
+/* 메인 화면 스타일 */
+.main_screen {
+    position: relative;
+    text-align: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.signImg {
+    width: 50px;
+    height: 50px;
+    /* 다른 스타일 속성 추가 가능 */
+}
+
+.signImg img {
+    position: relative;
+}
+
+.hoverBox {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 3000;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 추가 */
+}
+
+.hoverBox button {
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    color: black;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* 배경색 변경 애니메이션 */
+}
+
+.hoverBox button:hover {
+    background-color: #6202FF; /* 호버 시 배경색 변경 */
+}
+
+
+
+.signImg img:hover + .hoverBox,
+.signImg .hoverBox:hover {
+    display: block;
+}
+
+.hoverBox a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
+}

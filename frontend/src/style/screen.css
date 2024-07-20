@@ -1,0 +1,239 @@
+/* 기본 스타일 */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+/*  screen.css  */
+
+.head_screen {
+    position: fixed; /* 상단 고정 */
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 2000;
+    border-bottom: 1px solid #070707;
+    top: 0;
+}
+
+.head_screen .image-wrapper {
+    background-color: #ffffff;
+    width: 100%;
+    height: 100px;
+    max-width: 1920px; /* 최대 너비 설정 */
+    position: relative;
+}
+
+.head_screen .image-wrapper img {
+    height: 100px;
+    width: 100%;
+    max-height: 100px; /* head_screen 높이에 맞게 최대 높이 설정 */
+}
+
+.welcome-message {
+    width: 400px;
+    height: 30px;
+    position: absolute;
+    margin-top: 15px;
+    justify-content: right;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+}
+
+.main_screen {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column; /* 수직 중앙 정렬을 위해 column으로 변경 */
+    justify-content: center; /* 수직 중앙 정렬 */
+    align-items: center; /* 수평 중앙 정렬 */
+    width: 100%;
+    min-height: 100vh; /* 화면 전체 높이를 채우도록 설정 */
+    margin-top: 80px; /* head_screen 높이 만큼의 마진 추가 */
+    position: relative; /* 배경 이미지를 위해 position 설정 */
+    background-image: url('../../public/mainpage_Img.png'); /* 배경 이미지 설정 */
+    background-size: cover; /* 화면에 가득 차도록 설정 */
+    background-position: center; /* 배경 이미지 위치를 가운데로 설정 */
+    background-repeat: no-repeat; /* 배경 이미지 반복 안 함 */
+}
+
+.text_screen {
+    box-sizing: border-box;
+    position: absolute;
+    width: 70%; /* 초기 크기 조정 */
+    max-width: 1220px;
+    height: 500px; /* 초기 높이 설정 */
+    left: 50%;
+    top: 130px;
+    transform: translateX(-50%); /* 가운데 정렬 */
+    padding: 20px; /* 내부 패딩 추가 */
+    z-index: 1; /* text_screen을 배경 이미지 위에 배치 */
+}
+
+.main_text {
+    font-size: 6em; /* 기본 폰트 크기 조정 */
+    color: #fff;
+    margin-left: 0;
+    margin-bottom: 0; /* 간격 줄이기 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    font-family: 'Georgia', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트 윤곽선 추가 */
+}
+
+.sub_text1 {
+    font-size: 1.7em; /* 기본 폰트 크기 조정 */
+    color: #fff;
+    margin-left: 0;
+    margin-top: 0; /* 간격 줄이기 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+    font-family: 'Georgia', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트 윤곽선 추가 */
+}
+
+.sub_text2 {
+    width: 180px;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(134, 128, 128, 0.9);
+    color: white;
+    font-size: 1em;
+    text-align: center;
+    font-family: 'Georgia', sans-serif;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.modal_sub {
+    background-color: rgba(74, 74, 74, 0.5);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    z-index: 100;
+}
+
+.logo_wrapper {
+    cursor: pointer;
+}
+
+.sub_screen {
+    background-color: #ffffff;
+    display: flex; /* display: contents에서 flex로 변경 */
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 100vh; /* 화면 전체 높이를 채우도록 설정 */
+    position: relative; /* 위치 고정을 해제 */
+    padding: 20px; /* 전체 padding 추가 */
+    box-sizing: border-box; /* padding이 요소의 크기에 포함되도록 box-sizing 설정 */
+    overflow-x: hidden; /* 가로 스크롤 제거 */
+}
+
+.usage-instructions {
+    display: flex;
+    overflow-x: hidden;
+    white-space: nowrap;
+    padding: 20px;
+    scroll-behavior: auto;
+}
+
+.usage-instructions:active {
+    cursor: grabbing;
+}
+
+.usage-image {
+    display: inline-block;
+    margin-right: 150px;
+    flex: 0 0 auto;
+    pointer-events: none;
+    border: 1px solid #000; /* 바깥쪽 1px짜리 선 추가 */
+    border-radius: 32px; /* 둥근 모서리 설정 */
+    display: flex; /* 자식 요소에 맞게 크기 조정 */
+    box-sizing: border-box; /* padding과 border를 포함한 크기 계산 */
+}
+
+.usage-image img {
+    max-width: 100%;
+    height: auto;
+    pointer-events: auto;
+}
+
+.centered-heading {
+    font-size: 5em;
+    text-align: center; /* 텍스트를 가운데 정렬 */
+    margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 요소를 가운데 정렬 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+    .main_screen {
+        width: 100%;
+        height: auto;
+        margin-top: 80px;
+    }
+
+    .text_screen {
+        width: 80%;
+        top: 150px;
+        padding: 20px;
+    }
+
+    .main_text {
+        font-size: 4em;
+    }
+
+    .sub_text1 {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 768px) {
+    .text_screen {
+        width: 60%;
+        top: 150px;
+        padding: 20px;
+    }
+
+    .main_text {
+        font-size: 3em;
+    }
+
+    .sub_text1 {
+        font-size: 1.3em;
+    }
+
+    .sub_text2 {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .text_screen {
+        width: 95%;
+        top: 100px;
+        padding: 20px;
+    }
+
+    .main_text {
+        font-size: 1.5em;
+    }
+
+    .sub_text1 {
+        font-size: 1em;
+    }
+
+    .sub_text2 {
+        font-size: 0.8em;
+    }
+}
