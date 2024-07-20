@@ -6,7 +6,7 @@ import '../style/screen.css';
 import '../style/login.css';
 import KakaoLogin from 'react-kakao-login';
 
-// login.jsx  //
+//  login.jsx  //
 const Login = ({ onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');

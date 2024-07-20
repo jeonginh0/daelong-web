@@ -110,7 +110,7 @@ const Navbar = () => {
                         ) : username ? (
                             <span>안녕하세요, {username}님!</span>
                         ) : (
-                            <span></span>
+                            <span>로그인이 필요합니다</span>
                         )}
                     </div>
                     <img src="/human.png" alt="sign" width="50" height="50"/>
@@ -124,6 +124,7 @@ const Navbar = () => {
                             <>
                                 <button className="button" onClick={goLoginPage}>로그인</button>
                                 <button className="button" onClick={goSignUpPage}>회원가입</button>
+                                <button className="button" onClick={goHistoryPage}>사용 기록</button>
                             </>
                         )}
                     </div>
