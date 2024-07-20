@@ -110,7 +110,7 @@ const Navbar = () => {
                         ) : username ? (
                             <span>안녕하세요, {username}님!</span>
                         ) : (
-                            <span></span>
+                            <span>로그인이 필요합니다</span>
                         )}
                     </div>
                     <img src="/human.png" alt="sign" width="50" height="50"/>

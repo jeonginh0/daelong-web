@@ -55,6 +55,7 @@ const MainPage = () => {
             .then(coordsArray => {
                 const url = `/map?coords=${JSON.stringify(coordsArray)}`;
                 const token = localStorage.getItem('access_token'); // JWT 토큰 가져오기
+                navigate(url); // URL로 네비게이션
 
                 axios.post('http://localhost:8000/api/user/save-url/',
                     { page_url: url },

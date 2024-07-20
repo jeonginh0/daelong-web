@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import '../style/history.css';
 import axios from "axios";
-
+// history.jsx
 const History = () => {
     const [histories, setHistories] = useState([]);
     const [currentDateTime, setCurrentDateTime] = useState('');

@@ -66,10 +66,10 @@ const SignUpForm = () => {
 
 
     return (
-        <div className="vid-container">
-            <div className="inner-container">
+        <div className="vid-container2">
+            <div className="inner-container2">
                 <div className="box2">
-                    <h1 style={{textAlign: 'center', marginBottom: '30px'}}>회원가입 | Sign Up</h1>
+                    <h1 style={{textAlign: 'center', marginBottom: '30px'}}>회원가입</h1>
                     <input
                         type="text"
                         value={name}
@@ -101,7 +101,7 @@ const SignUpForm = () => {
                         placeholder="이메일 입력"
                     />
                     <button type="submit" onClick={postUser}>가입하기</button>
-                    <p><span className="signup" onClick={goLoginPage}>로그인 | Login</span></p>
+                    <p><span className="signup" onClick={goLoginPage}>로그인</span></p>
                 </div>
             </div>
         </div>

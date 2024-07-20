@@ -1,154 +1,132 @@
-@import url(https://fonts.googleapis.com/css?family=Inter:300);
-/*body{*/
-/*    padding:0;*/
-/*    margin:0;*/
-/*    font-family: 'Inter';*/
-/*    background: #5e42a6;*/
-/*}*/
-
-/* login.css */
-.vid-container{
+.vid-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0 auto;
-    background-image: url('../../public/mapd.png'); /* 배경 이미지 설정 */
 }
+
 .bgvid.back {
-    position: fixed; right: 0; bottom: 0;
-    min-width: 100%; min-height: 100%;
-    width: auto; height: auto; z-index: -100;
-}
-.inner {
-    position: absolute;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
 }
 
 .inner-container {
-    width: 2000px;
-    height: 1200px;
-    position: absolute;
-    top: calc(50vh - 600px);
-    left: calc(50vw - 1000px);
-    overflow: hidden;
-    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
 }
 
 .box {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    font-family: 'Inter';
+    width: 800px;
+    max-width: 70%;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.0);
+    border-radius: 15px;
+    text-align: center;
     color: #000000;
-    background: rgba(0, 0, 0, 0%);
-    padding: 360px 0px;
-    border-radius: 7px;
+    font-family: 'Inter', sans-serif;
 }
 
-.box h1{
-    text-align:center;
-    margin:30px 0;
-    font-size:30px;
+.box h1 {
+    font-size: 30px;
+    margin-bottom: 30px;
 }
-.box input{
-    display:block;
-    width:800px;
-    margin:20px auto;
-    padding:25px;
-    background: rgb(255, 255, 255);
-    color: #070707;
-    border-radius: 15px;
+
+.box input {
+    display: block;
+    width: 95%;
+    padding: 15px;
+    margin: 20px 0;
     border: 1px solid #000;
+    border-radius: 15px;
+    background: #fff;
+    color: #070707;
 }
+
 input::placeholder {
     color: rgb(0, 0, 0);
 }
-.signup{
-    color: rgb(0, 0, 0)!important;
-}
-.box input:focus,.box input:active,.box button:focus,.box button:active{
-    outline:none;
-}
+
 .box button {
-    background: #6202FF;
-    border: 0;
-    color: #fff;
+    width: 100%;
     padding: 15px;
-    font-size: 20px;
-    width: 850px;
-    margin: 20px auto;
-    display: block;
-    cursor: pointer;
+    margin: 20px 0;
+    border: 0;
     border-radius: 15px;
-    transition: background 0.3s; /* 부드러운 전환 효과 추가 */
+    background: #2c0375;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
 .box button:hover {
-    background: #2c0375; /* 호버 시 배경색 */
+    background: #6202FF;
 }
 
 .box button:active {
     background: #000000;
 }
 
-.box p {
-    font-size: 14px;
-    text-align: center;
-}
-
-.box p span {
-    cursor: pointer;
-    color: #636365;
-}
-
 .remember-container {
-    border: 0;
-    color: #FFFFFF;
-    padding: 10px;
-    font-size: 18px;
-    margin: 5px auto;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    margin: 10px 0;
     cursor: pointer;
-    border-radius: 10px;
-    width: 850px;
-    position: relative; /* 상대적 위치 지정 */
+    color: #000000;
 }
 
 .remember-checkbox {
     width: 20px;
     height: 20px;
+    margin-right: 10px;
     border: 2px solid #000000;
-    margin-right: 10px; /* Space between checkbox and label */
     border-radius: 4px;
-    position: relative; /* 상대적 위치 지정 */
-
 }
 
 .remember-checkbox.checked {
-    background-color: #A95AF7; /* 체크 시 배경색 변경 */
+    background-color: #A95AF7;
 }
 
 .remember-container label {
-    color: rgb(0, 0, 0); /* Text color */
-    cursor: pointer; /* Pointer cursor for label */
+    cursor: pointer;
+    color: rgb(0, 0, 0);
 }
 
 .row {
     display: flex;
     justify-content: space-between;
-    width: 800px;
-    margin: 20px auto;
-}
-@media screen and (max-width: 986px) {
-    .bgvid{
-        height: 100px!important;
-    }
+    width: 550px;
+    margin: 5px auto;
+
 }
 
-@media screen and (min-width: 986px) {
-    .bgvid.back {
-        width: 100%;
+@media screen and (max-width: 768px) {
+    .box {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .box h1 {
+        font-size: 24px;
+    }
+
+    .box button {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .remember-container {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

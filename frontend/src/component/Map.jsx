@@ -7,6 +7,8 @@ import "../style/button.css";
 
 const { kakao } = window;
 
+//   map.jsx
+
 const Map = () => {
     const location = useLocation();
     const params = new URLSearchParams(location.search);

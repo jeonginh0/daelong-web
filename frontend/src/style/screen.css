@@ -1,11 +1,12 @@
 /* 기본 스타일 */
-/*body, html {
+body, html {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-}*/
+}
+
 /*  screen.css  */
 
 .head_screen {
@@ -32,17 +33,19 @@
 .head_screen .image-wrapper img {
     height: 100px;
     width: 100%;
-    /*height: auto; !* 이미지 반응형으로 만들기 *!*/
     max-height: 100px; /* head_screen 높이에 맞게 최대 높이 설정 */
 }
 
 .welcome-message {
+    width: 400px;
+    height: 30px;
     position: absolute;
     margin-top: 15px;
     justify-content: right;
     transform: translateX(-50%);
     font-size: 18px;
     font-weight: bold;
+    white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
 }
 
 .main_screen {
@@ -70,9 +73,6 @@
     left: 50%;
     top: 130px;
     transform: translateX(-50%); /* 가운데 정렬 */
-    /*background: rgba(134, 128, 128, 0.62);*/
-    /*border: 1px solid rgba(0, 0, 0, 0.5);*/
-    /*border-radius: 50px;*/
     padding: 20px; /* 내부 패딩 추가 */
     z-index: 1; /* text_screen을 배경 이미지 위에 배치 */
 }
@@ -133,7 +133,7 @@
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    height: 100vh; /* 화면 전체 높이를 채우도록 설정 */
+    height: 50vh; /* 화면 전체 높이를 채우도록 설정 */
     position: relative; /* 위치 고정을 해제 */
     padding: 20px; /* 전체 padding 추가 */
     box-sizing: border-box; /* padding이 요소의 크기에 포함되도록 box-sizing 설정 */
@@ -169,7 +169,6 @@
     pointer-events: auto;
 }
 
-
 .centered-heading {
     font-size: 5em;
     text-align: center; /* 텍스트를 가운데 정렬 */
@@ -179,17 +178,19 @@
 /* 반응형 디자인 */
 @media (max-width: 1024px) {
     .main_screen {
-        width: 80%;
+        width: 100%;
+        height: auto;
+        margin-top: 80px;
     }
 
     .text_screen {
         width: 80%;
         top: 150px;
-        padding: 200px;
+        padding: 20px;
     }
 
     .main_text {
-        font-size: 2.5em;
+        font-size: 4em;
     }
 
     .sub_text1 {
@@ -199,13 +200,13 @@
 
 @media (max-width: 768px) {
     .text_screen {
-        width: 40%;
+        width: 60%;
         top: 150px;
-        padding: 200px;
+        padding: 20px;
     }
 
     .main_text {
-        font-size: 2.5em;
+        font-size: 3em;
     }
 
     .sub_text1 {
