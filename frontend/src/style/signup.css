@@ -8,14 +8,14 @@
 
 /*  signup.css  */
 
-.vid-container{
+.vid-container2{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0 auto;
 }
-.bgvid.back {
+.bgvid.back2 {
     position: fixed; right: 0; bottom: 0;
     min-width: 100%; min-height: 100%;
     width: auto; height: auto; z-index: -100;
@@ -23,7 +23,7 @@
 .inner {
     position: absolute;
 }
-.inner-container{
+.inner-container2{
     width:2000px;
     height:1200px;
     position: absolute;
@@ -58,7 +58,7 @@
     border: 1px solid #000;
 }
 
-input::placeholder {
+input2::placeholder {
     color: rgb(0,0,0);
 }
 
