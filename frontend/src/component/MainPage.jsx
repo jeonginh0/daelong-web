@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const { kakao } = window;
 
-// mainpage.jsx
+//  mainpage.jsx
 
 const MainPage = () => {
     const [isUsageModalOpen, setIsUsageModalOpen] = useState(false);

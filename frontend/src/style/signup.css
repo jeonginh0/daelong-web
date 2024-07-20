@@ -1,117 +1,137 @@
 @import url(https://fonts.googleapis.com/css?family=Inter:300);
-/*body{*/
-/*    padding:0;*/
-/*    margin:0;*/
-/*    font-family: 'Inter';*/
 
-/*}*/
-
-/*  signup.css  */
-
-.vid-container{
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden; /* 페이지 스크롤 제거 */
+    background-color: #f0f0f0;
+}
+
+.vid-container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
     margin: 0 auto;
+    overflow: hidden; /* 컨테이너 내 스크롤 제거 */
 }
-.bgvid.back {
-    position: fixed; right: 0; bottom: 0;
-    min-width: 100%; min-height: 100%;
-    width: auto; height: auto; z-index: -100;
+
+.bgvid.back2 {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
 }
+
 .inner {
     position: absolute;
 }
-.inner-container{
-    width:2000px;
-    height:1200px;
-    position: absolute;
-    top:calc(50vh - 600px);
-    left:calc(50vw - 1000px);
-    overflow:hidden;
-    border-radius: 7px;
+
+.inner-container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
 }
-.box2{
-    position:absolute;
-    height:100%;
-    width:100%;
-    font-family:'Inter';
-    color:#000000;
-    background:rgba(0, 0, 0, 0%); /* background:rgba(0, 0, 0, 28%); */
-    padding:350px 0px;
-    border-radius: 7px;
+
+.box2 {
+    width: 100%;
+    max-width: 400px; /* 너비를 줄여 화면에 맞추기 */
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    text-align: center;
+    color: #000000;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.box2 h1{
-    text-align:center;
-    margin:20px 0;
-    font-size:30px;
+
+.box2 h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
 }
-.box2 input{ /*id, pw box*/
-    display:block;
-    width:820px;
-    margin:20px auto;
-    padding:15px;
-    background: rgb(255, 255, 255);
-    color: #070707;
-    border-radius: 12px;
+
+.box2 input { /* id, pw box */
+    display: block;
+    width: 100%; /* 입력 필드 너비를 부모 요소에 맞추기 */
+    padding: 10px;
+    margin: 10px 0;
     border: 1px solid #000;
+    border-radius: 15px;
+    background: #fff;
+    color: #070707;
 }
 
 input::placeholder {
-    color: rgb(0,0,0);
+    color: rgb(0, 0, 0);
 }
 
-.signup{
+.signup {
     color: rgb(0, 0, 0) !important;
 }
 
 .signform {
-    font-size: xxx-large;
+    font-size: xx-large;
     text-align: center;
     margin: 0 auto;
 }
 
 .normal-information {
-    font-size: xx-large;
+    font-size: large;
     text-align: center;
-    margin-right: 1000px;
 }
 
 .agree-agree {
-    font-size: xx-large;
+    font-size: large;
     text-align: center;
-    margin-right: 1000px;
 }
-.box2 input:focus,.box2 input:active,.box2 button:focus,.box2 button:active{
-    outline:none;
+
+.box2 input:focus,
+.box2 input:active,
+.box2 button:focus,
+.box2 button:active {
+    outline: none;
 }
-.box2 button{
+
+.box2 button {
     background: #6202FF;
-    color:#fff;
-    padding:10px;
-    font-size:20px;
-    width:850px;
-    margin:30px auto;
-    display:block;
-    cursor:pointer;
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%; /* 버튼 너비를 부모 요소에 맞추기 */
+    margin: 20px 0;
+    display: block;
+    cursor: pointer;
     border-radius: 12px;
     border: 1px solid #000;
 }
-.box2 button:active{
-    background:#000000;
+
+.box2 button:active {
+    background: #000000;
 }
 
 .box2 button:hover {
     background: #2c0375; /* 호버 시 배경색 */
 }
 
-.box2 p{
-    font-size:14px;
-    text-align:center;
+.box2 p {
+    font-size: 14px;
+    text-align: center;
 }
-.box2 p span{
-    cursor:pointer;
+
+.box2 p span {
+    cursor: pointer;
     color: #636365;
 }
 
@@ -120,8 +140,8 @@ input::placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 850px;
-    margin: 40px auto;
+    width: 100%;
+    margin: 20px 0;
     border-radius: 15px;
     border: 1px solid #000;
 }
@@ -138,14 +158,14 @@ input::placeholder {
 
 .box2 .agree-container label {
     color: #000000;
-    font-size: 16px;
+    font-size: 14px;
     flex: 1;
     text-align: center; /* 텍스트를 가운데 정렬 */
 }
 
 @media screen and (max-width: 986px) {
-    .bgvid{
-        height: 100px!important;
+    .bgvid {
+        height: 100px !important;
     }
 }
 

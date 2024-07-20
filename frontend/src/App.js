@@ -9,7 +9,7 @@ import './style/map.css';
 import './style/button.css';
 import Navbar from "./component/Navigation";
 import { GoogleOAuthProvider } from '@react-oauth/google';
-
+// app.js
 function App() {
     return (
         <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>

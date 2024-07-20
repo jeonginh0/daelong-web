@@ -7,7 +7,7 @@ import "../style/button.css";
 
 const { kakao } = window;
 
-//  map.jsx
+//   map.jsx
 
 const Map = () => {
     const location = useLocation();

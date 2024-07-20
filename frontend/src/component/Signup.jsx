@@ -66,8 +66,8 @@ const SignUpForm = () => {
 
 
     return (
-        <div className="vid-container">
-            <div className="inner-container">
+        <div className="vid-container2">
+            <div className="inner-container2">
                 <div className="box2">
                     <h1 style={{textAlign: 'center', marginBottom: '30px'}}>회원가입 | Sign Up</h1>
                     <input
